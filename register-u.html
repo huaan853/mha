@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-cmn-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="img/logo_icon.png">
+<title>澳門高血壓聯盟 - 會員登記</title>
+<link href="css/mc_style.css" rel="stylesheet">
+<link href="css/blog.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <form class="form-signin" action="action.php" method="post">
+      <div class="text-center mb-4">
+        <h1 class="h3 mb-3 font-weight-normal">會員登記</h1>
+      </div>
+      <div class="form-label-group">
+        <input type="text" id="inputCName" name="name" class="form-control" placeholder="姓名（中文）" required autofocus>
+      </div>
+      <div class="form-label-group">
+        <input type="text" id="inputEName" name="ename" class="form-control" placeholder="姓名（外文）">
+      </div>
+      <div class="form-label-group">
+        <input type="text" id="IDNo" name="idno" class="form-control" placeholder="身份證號碼" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="genderSelect">出生日期</label>
+        </div>
+        <input type="date" id="birthDate" name="birthdate" class="form-control" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="gender">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;別</label>
+        </div>
+        <select class="custom-select" id="gender" name="gender">
+          <option value="male">男</option>
+          <option value="female">女</option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="job">職&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;業</label>
+        </div>
+        <select class="custom-select" id="job" name="job">
+          <option value="doctor">醫生</option>
+          <option value="nurse">護士</option>
+          <option value="technician">技術人員</option>
+          <option value="others">其他</option>
+        </select>
+      </div>
+      <div class="form-label-group">
+        <input type="text" id="inputCompany" name="employer" class="form-control" placeholder="現職機構" required>
+      </div>
+		<div class="form-label-group">
+        <input type="email" id="email" name="email" class="form-control" placeholder="電子郵件" required>
+      </div>
+		<div class="form-label-group">
+        <input type="tel" id="tel" name="tel" class="form-control" placeholder="電話號碼" required>
+      </div>
+		<div class="form-label-group">
+        <input type="text" id="address" name="address" class="form-control" placeholder="聯繫地址" required>
+      </div>
+      <button class="btn btn-lg btn-danger btn-block" type="submit">確認提交</button>
+    </form>
+<!-- /container --> 
+<script>window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')</script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/popper.min.js"></script>
+</body>
+</html>
