@@ -22,6 +22,9 @@ function yearCount(year)
 	case	2018:
 		cnt=6;
 		break;
+	case 2019:
+		cnt=2;
+		break;
 	}
 	return cnt;
 }
