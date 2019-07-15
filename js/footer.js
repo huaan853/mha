@@ -12,7 +12,6 @@ function footer()
 }
 function tohttps()
 {
-	debugger;
 	var url = window.location.href;
     if (url.indexOf("https") < 0) {
         url = url.replace("http:", "https:");
