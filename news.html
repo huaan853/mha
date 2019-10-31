@@ -12,6 +12,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/footer.js"></script>
 <script src="js/cycle.js"></script>
+<script src="js/mha.js"></script>
+<script src="js/news.js"></script>
 	
 </head>
 
@@ -24,41 +26,17 @@
   </header>
   
   <!-- This is collapsed navbar-->
-  <nav class="navbar navbar-expand-sm navbar-light ">
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-    <div class="navbar-collapse collapse" id="navbarsExampleDefault" style="">
-      <ul class="navbar-nav mr-auto justify-content-between" style="width:100%">
-        <li class="nav-item"> <a class="nav-link" href="index.html">首頁</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="constitution.html">聯盟章程</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="about.html">聯盟簡介</a> </li>
-        <li class="nav-item active"> <a class="nav-link" href="news.html">聯盟動態<span class="sr-only">(current)</span></a> </li>
-        <li class="nav-item"> <a class="nav-link" href="activity.html">活動花絮</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="research.html">研究成果</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="healthKnowledge.html">健康教育</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="register.html">會員登記</a> </li>
-      </ul>
-    </div>
-  </nav>
-
+<script>
+	menu("聯盟動態");
+</script>
+	
   <div class="my-3 mc_p-3 bg-white rounded box-shadow">
     <div class="list-group">
+		<script>
+			  news();
+		</script>
     
-    	<a href="news/news-2019-1.html" class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1">
-			團體關注高血壓教心肺復甦</h6>
-        <small>2019.5.28</small> </div>
-      <p class="mb-1">澳門高血壓聯盟今年繼續響應&ldquo;世界高血壓日&rdquo;，由澳門基金會支持，以&ldquo;澳門特區成立二十周年暨邁向全民血壓健康社區培訓系列活動&rdquo;為主題於日前假高士德宣道堂舉行&ldquo;澳門高血壓聯盟急救推廣系列活動&rdquo;。</p>
-      </a> 
-
-    	<a href="news/news-2019-2.html" class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1">
-			醫生倡三招防治高血壓</h6>
-        <small>2019.5.21</small> </div>
-		<p class="mb-1">    世界衛生組織數據顯示，全球每年有九百四十萬例因高血壓引致死亡個案，全球大約有四成二十五歲及以上成人被診斷患有高血壓，患病總人數從一九八○年的六億大幅增加至二○○八年的十億。一六年的《澳門健康調查》已顯示，高血壓的粗患病率為百分之廿五點五，即平均約每四個人就有一個人患有高血壓，其死亡率僅次於癌症和心臟病，近年常踞於十大死因的第三位。</p>		
-		</a> 
-		
+	
 		
 		<a href="news/news-2018-1.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
@@ -101,19 +79,14 @@
         <small>2015.5.10</small> </div>
       <p class="mb-1">為響應世界高血壓日，推廣市民對高血壓疾病防治知識，澳門高血壓聯盟主辦的2015年世界高血壓日「知曉您的血壓」專題專業講座於昨邀請有關專家為市民介紹高血壓流行現況及相關研究成果。</p>
       </a>
-		 <a href="news/news-2014-01.html" class="list-group-item list-group-item-action flex-column align-items-start">
+
+		<a href="news/news-2014-01.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h6 class="mb-1">團體辦講座關注高血壓</h6>
         <small>2014</small> </div>
       <p class="mb-1">由澳門高血壓聯盟主辦，鏡湖護理學院、街總協辦的“知曉你的血壓”世界高血壓社區活動昨舉行，特邀心內科專家講解高血壓成因、種類及預防措施等，與數百居民共同關注高血壓。</p>
       </a>
 
-		<a href="news/news-2012-1.html" class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"> 高血壓危險因素調查科研專案</h6>
-        <small>2012.8.6</small> </div>
-      <p class="mb-1">澳門高血壓聯盟連同澳門鏡湖護理學院以及澳門街坊聯合總會將會開展一項名為「高血壓的危險因素﹕中國澳門地區大型橫斷面流行病學調查」的科研專案。</p>
-      </a>
 				
 		  <script>
 			  cycle();
@@ -129,6 +102,9 @@
         <li class="page-item"> <a class="page-link" href="news/news-p2.html">下一頁</a> </li>
       </ul>
     </nav>
+<script>
+	navpage(1);
+</script>
   </div>
   
   <!-- Site footer -->
