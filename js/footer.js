@@ -4,7 +4,6 @@
 //	在javascript需要直接寫unicode，\u00A9
 function footer()
 {
-	debugger;
 	var cs=document.currentScript;
 	var myDate = new Date();
 	var year= myDate.getFullYear();
