@@ -21,7 +21,6 @@ function getNewsItems()
 }
 function newsIndex()
 {
-	debugger;
 	var cs=document.currentScript;
 	var newsParent=cs.parentNode;
 	var newsItems=getNewsItems();
@@ -35,12 +34,6 @@ function newsIndex()
 		var h6 = document.createElement('h6');
 		h6.className="mb-1";
 		h6.textContent=newsItems[i].newstitle;
-/*
-		var small = document.createElement('small');
-		small.textContent=newsItems[i].newsdate;
-		div.appendChild(h6);
-		div.appendChild(small);
-*/
 		var dat="("+newsItems[i].newsdate +")";
 		var p = document.createElement('p');
 		p.className="mb-1";
@@ -53,7 +46,6 @@ function newsIndex()
 }
 function news()
 {
-	debugger;
 	var cs=document.currentScript;
 	var newsParent=cs.parentNode;
 	var newsItems=getNewsItems();
