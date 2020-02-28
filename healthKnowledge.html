@@ -10,7 +10,12 @@
 <link href="css/mc_style.css" rel="stylesheet">
 <link href="css/blog.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
+<script src="js/footer.js"></script>
+<script src="js/cycle.js"></script>
+<script src="js/mha.js"></script>
+<script src="js/knowledge.js"></script>
+
+	</head>
 
 <body>
 <div class="container">
@@ -21,7 +26,11 @@
   </header>
   
   <!-- This is collapsed navbar-->
-  <nav class="navbar navbar-expand-sm navbar-light ">
+ <script>
+	menu("健康教育");
+</script>
+<!--
+ <nav class="navbar navbar-expand-sm navbar-light ">
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
     <div class="navbar-collapse collapse" id="navbarsExampleDefault" style="">
       <ul class="navbar-nav mr-auto justify-content-between" style="width:100%">
@@ -36,58 +45,69 @@
       </ul>
     </div>
   </nav>
+-->
   <div class="my-3 mc_p-3 bg-white rounded box-shadow">
-    <div class="list-group"> <a href="healthKnowledge/01_XueYa.html" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="list-group"> 
+
+		<a href="guideline/guideline.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">1</span> 血壓</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">1</span> 高血壓管理指南</h6>
+        <small></small> </div>
+      <p class="mb-1">國際機構、中國相關部門根據高血壓情況及時發佈新的高血壓指南</p>
+      </a> 
+		
+		<a href="healthKnowledge/01_XueYa.html" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">2</span> 血壓</h6>
         <small></small> </div>
       <p class="mb-1">人的血液輸送到全身各部位需要一定的壓力，即心臟的收縮、舒張交替進行，推動血液在心髒和血管組成的密閉循環系統內持續流動，血液在血管內流動時對血管壁造成的單位面積血管壁的側壓力，即壓強。此壓強叫血壓。血管分動脈、毛細血管和靜脈，所以，也就有動脈血壓、毛細血管壓和靜脈血壓。通常所說的血壓是指動脈血壓。當血管擴張時，血壓下降；血管收縮時，血壓升高。</p>
-      </a> <a href="healthKnowledge/02_GaoXueYa.html" class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">2</span> 高血壓</h6>
+      </a> 
+		
+		<a href="healthKnowledge/02_GaoXueYa.html" class="list-group-item list-group-item-action flex-column align-items-start">
+      
+		<div class="d-flex w-100 justify-content-between">
+
+		  <h6 class="mb-1"><span class="badge badge-danger badge-pill>3</span> 高血壓</h6>
         <small></small> </div>
       <p class="mb-1">高血壓是多種心腦血管病的基礎疾病，是心腦血管急性事件的重要危險因素。《中國心血管病報》指出：“據2002年調查，中國18歲以上成人高血壓患病率為18.8%。近幾年各地調查的高血壓患病率都呈上升趨勢。北方地區高於南方，部分北方地區高達30%”；“根據幾何級數估算，2012年中國15歲以上人群高血壓患病率為24%，全國高血壓患病人數為2.7億，每10個成人中至少有2人患高血壓。</p>
       </a> <a href="healthKnowledge/03_TeShuRen.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">3</span> 特殊人群高血壓</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">4</span> 特殊人群高血壓</h6>
         <small></small> </div>
       <p class="mb-1">老年高血壓 | 兒童高血壓 | 妊娠期高血壓 | 白大衣高血壓 | 隱蔽性高血壓</p>
       </a> <a href="healthKnowledge/04_JiFaXing.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">4</span> 繼發性高血壓</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">5</span> 繼發性高血壓</h6>
         <small></small> </div>
       <p class="mb-1">繼發性高血壓是指病因明確的高血壓，當查出病因並有效去除或控制病因後，作為繼發性高血壓可被治癒或明顯緩解；繼發性高血壓在高血壓人群中約5～10%；常見病因為腎實質性、內分泌性、腎血管性高血壓和睡眠呼吸暫停綜合症；由於精神心理問題而引發的高血壓也時常可以見到。</p>
       </a> <a href="healthKnowledge/05_GaoXueYaFei.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">5</span> 高血壓非藥物治療</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">6</span> 高血壓非藥物治療</h6>
         <small></small> </div>
       <p class="mb-1">高血壓確診後，應長期堅持高血壓非藥物治療(生活方式干預) ，其中大多數需要長期應用降壓藥物治療，前者是高血壓治療的基石，後者是血壓達標的關鍵，二者相輔相成，缺一不可。</p>
       </a> <a href="healthKnowledge/06_GaoXueYaFang.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">6</span> 高血壓防治中的誤區與偽科學</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">7</span> 高血壓防治中的誤區與偽科學</h6>
         <small></small> </div>
       <p class="mb-1">目前患者對高血壓有很多認識誤區，干擾了高血壓的規範治療。必須澄清這些錯誤觀念，科學、規範地防治高血壓。還要識別偽科學，防止上巫醫假藥的當。</p>
       </a> <a href="healthKnowledge/07_ChaoZhong.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">7</span> 高血壓與超重/肥胖</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">8</span> 高血壓與超重/肥胖</h6>
         <small></small> </div>
       <p class="mb-1">高血壓的本身就是心血管危險因素之一，如果加上肥胖或血脂異常等，它的心血管風就不是一加一等於二，而是大於二；同時超重與肥胖又可以導致高血壓。隨著體重指數（BMI)的增加,收縮壓和舒張壓水平也增高。</p>
       </a> <a href="healthKnowledge/08_XueZhiYiChang.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">8</span> 高血壓與血脂異常</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">9</span> 高血壓與血脂異常</h6>
         <small></small> </div>
       <p class="mb-1">臨床試驗資料提示，高血壓患者的血壓與血總膽固醇(TC)水平之間具有正相關。基線TC、TC與高密度脂蛋白膽固醇(HDL-C)比值高的男性人群隨訪更易發生高血壓。調脂治療是否有降壓作用，目前沒有定論。一些小型研究顯示，使用他汀藥物調脂治療能在一定程度上降低血壓水平。心血管病轉歸試驗降脂部分(ASCOT-LLA)研究，雖然觀察到抗高血壓藥物治療中加用他汀藥物沒有獲得進一步的降壓效應，但患者臨床預後卻有更大的改善。因此,對高血壓患者伴血脂異常,即使不超出正常上限,也應予以適當的關注和必要的治療。</p>
       </a> <a href="healthKnowledge/09_DaiTangXie.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">9</span> 高血壓與糖代謝異常</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">10</span> 高血壓與糖代謝異常</h6>
         <small></small> </div>
       <p class="mb-1">糖代謝異常的血糖診斷標準是根據1999年世界衛生組織（WHO）公佈，同年得到中華醫學會糖尿病學會等認同，並建議在中國執行。</p>
-      </a> <a href="healthKnowledge/10_DaiXieZongHe.html" class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">10</span> 高血壓與代謝綜合徵</h6>
-        <small></small> </div>
-      <p class="mb-1">近年來大規模臨床試驗研究提示，在高血壓患者中肥胖、糖代謝異常、脂代謝紊亂的發生率相當高，而代謝綜合徵（MS） 和其組分與高血壓有著密切的相關性；研究更進一步揭示了上述現象的實質。據估計，在中國城市人口中，每8個成年人中至少就有1個人患有代謝綜合徵。</p>
-      </a> </div>
+      </a>
+		
+	  </div>
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-end">
         <li class="page-item disabled"> <a class="page-link" href="" tabindex="-1">前一頁</a> </li>
@@ -99,9 +119,15 @@
   </div>
   
   <!-- Site footer -->
+<script>
+	footer();
+</script>
+<!--	
   <footer class="footer">
     <p>&copy; 2018 澳門高血壓聯盟</p>
   </footer>
+-->
+	
 </div>
 <!-- /container --> 
 <script>window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')</script> 
