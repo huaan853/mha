@@ -10,7 +10,11 @@
 <link href="../css/mc_style.css" rel="stylesheet">
 <link href="../css/blog.css" rel="stylesheet">
 <link href="../css/bootstrap.min.css" rel="stylesheet">
-</head>
+<script src="../js/footer.js"></script>
+<script src="../js/cycle.js"></script>
+<script src="../js/mha.js"></script>
+
+	</head>
 
 <body>
 <div class="container">
@@ -21,38 +25,37 @@
   </header>
   
   <!-- This is collapsed navbar-->
-  <nav class="navbar navbar-expand-sm navbar-light ">
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-    <div class="navbar-collapse collapse" id="navbarsExampleDefault" style="">
-      <ul class="navbar-nav mr-auto justify-content-between" style="width:100%">
-        <li class="nav-item"> <a class="nav-link" href="../index.html">首頁</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="../constitution.html">聯盟章程</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="../about.html">聯盟簡介</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="../news.html">聯盟動態</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="../activity.html">活動花絮</a> </li>
-        <li class="nav-item"> <a class="nav-link" href="../research.html">研究成果</a> </li>
-        <li class="nav-item active"> <a class="nav-link" href="../healthKnowledge.html">健康教育<span class="sr-only">(current)</span></a> </li>
-        <li class="nav-item"> <a class="nav-link" href="../register.html">會員登記</a> </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="my-3 mc_p-3 bg-white rounded box-shadow">
-    <div class="list-group"> <a href="11_DaiXieZongHeZheng.html" class="list-group-item list-group-item-action flex-column align-items-start">
+<script>
+	menu("健康教育");
+</script>
+	
+
+	<div class="my-3 mc_p-3 bg-white rounded box-shadow">
+    <div class="list-group"> 
+		<a href="10_DaiXieZongHe.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">11</span> 代謝綜合徵的預防及治療</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">11</span> 高血壓與代謝綜合徵</h6>
+        <small></small> </div>
+      <p class="mb-1">近年來大規模臨床試驗研究提示，在高血壓患者中肥胖、糖代謝異常、脂代謝紊亂的發生率相當高，而代謝綜合徵（MS） 和其組分與高血壓有著密切的相關性；研究更進一步揭示了上述現象的實質。據估計，在中國城市人口中，每8個成年人中至少就有1個人患有代謝綜合徵。</p>
+      </a> 
+		
+		<a href="11_DaiXieZongHeZheng.html" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">12</span> 代謝綜合徵的預防及治療</h6>
         <small></small> </div>
       <p class="mb-1">代謝綜合徵的預防及治療 | 代謝綜合徵的二級預防 | 代謝綜合徵飲食治療</p>
       </a> <a href="12_XueYaCeLiang.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">12</span> 血壓測量規範</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">13</span> 血壓測量規範</h6>
         <small></small> </div>
       <p class="mb-1">血壓測量有三種方式，即診室血壓、家庭自測血壓、動態血壓。診室血壓讀數高於家庭血壓和動態血壓24小時平均讀數。目前高血壓的診斷以診室血壓為主，提倡家庭自測血壓，有條件的可進行動態血壓測量，有助於協助診斷高血壓、發現「隱蔽性高血壓」及鑒別「白大衣高血壓」。</p>
       </a> <a href="13_JianKangJiaoYu.html" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h6 class="mb-1"><span class="badge badge-danger badge-pill">13</span> 健康教育處方</h6>
+        <h6 class="mb-1"><span class="badge badge-danger badge-pill">14</span> 健康教育處方</h6>
         <small></small> </div>
       <p class="mb-1">低鹽膳食處方 | 限酒處方 | 運動處方 | 戒煙處方 | 心理平衡處方</p>
-      </a> </div>
+      </a> 
+	  </div>
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-end">
         <li class="page-item"> <a class="page-link" href="../healthKnowledge.html" tabindex="-1">前一頁</a> </li>
@@ -64,10 +67,11 @@
   </div>
   
   <!-- Site footer -->
-  <footer class="footer">
-    <p>&copy; 2018 澳門高血壓聯盟</p>
-  </footer>
-</div>
+<script>
+	footer();
+</script>
+
+	</div>
 <!-- /container --> 
 <script>window.jQuery || document.write('<script src="../js/jquery-slim.min.js"><\/script>')</script> 
 <script src="../js/bootstrap.min.js"></script> 
