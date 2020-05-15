@@ -12,6 +12,7 @@ function getNewsItems()
 {
 	var NewsItems= new Array();
 	var i=0;
+	NewsItems[i++]= new newsItem("news-2020-1","控制情緒防高血壓","2020.5.15","馮秀華接受澳門日報採訪");
 	NewsItems[i++]= new newsItem("news-2019-4","高血壓聯盟赴粵交流","2019.11.15","聯盟組織會員到廣州參觀廣東省人民醫院、廣東省心血管病研究所及廣東高血壓研究基地。");
 
 	NewsItems[i++]= new newsItem("news-2019-3","慶祝中國高血壓日活動","2019.9.28","為慶祝中國高血壓日活動，由澳門高血壓聯盟主辦的「高血壓診治新進展研討會」於2019年9月28日晚假澳門皇冠假日酒店舉行舉行。");
