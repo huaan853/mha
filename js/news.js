@@ -37,6 +37,7 @@ function newsIndex()
 		var h6 = document.createElement('h6');
 		h6.className="mb-1";
 		h6.textContent=newsItems[i].newstitle;
+		div.appendChild(h6);
 		var dat="("+newsItems[i].newsdate +")";
 		var p = document.createElement('p');
 		p.className="mb-1";
@@ -57,6 +58,68 @@ function news()
 		var anchor = document.createElement('a');
 		anchor.className="list-group-item list-group-item-action flex-column align-items-start";
 		anchor.href="news/"+newsItems[i].newsurl+".html";
+		var div = document.createElement('div');
+		div.className="d-flex w-100 justify-content-between";
+		var h6 = document.createElement('h6');
+		h6.className="mb-1";
+		h6.textContent=newsItems[i].newstitle;
+		var small = document.createElement('small');
+		small.textContent=newsItems[i].newsdate;
+		div.appendChild(h6);
+		div.appendChild(small);
+		var p = document.createElement('p');
+		p.className="mb-1";
+		p.textContent=newsItems[i].newsabstract;
+		anchor.appendChild(div);
+		anchor.appendChild(p);
+		newsParent.appendChild(anchor);
+	}
+}
+
+function getNewsItems2()
+{
+	var NewsItems= new Array();
+	var i=0;
+	NewsItems[i++]= new newsItem("news-2015-01","澳近半數市民患高血壓","2015.5.10","為響應世界高血壓日，推廣市民對高血壓疾病防治知識，澳門高血壓聯盟主辦的2015年世界高血壓日「知曉您的血壓」專題專業講座於昨邀請有關專家為市民介紹高血壓流行現況及相關研究成果。");
+	NewsItems[i++]= new newsItem("news-2014-01","團體辦講座關注高血壓","2014","由澳門高血壓聯盟主辦，鏡湖護理學院、街總協辦的“知曉你的血壓”世界高血壓社區活動昨舉行，特邀心內科專家講解高血壓成因、種類及預防措施等，與數百居民共同關注高血壓。");
+
+	return NewsItems;
+	
+}
+
+
+function news2()
+{
+	var newsItems=getNewsItems2();
+	addNews(newsItems);
+}
+
+function getNewsItems3()
+{
+	var NewsItems= new Array();
+	var i=0;
+	NewsItems[i++]= new newsItem("news-2009-02","澳十三萬人患高血壓","","慢性疾病、隱性疾病，是現社會人們最易患上而又容易忽略的疾病，對人體健康做成很大的影響，據資料顯示；近十多年來，澳門心血管病的病發率、患病率、以及腦卒中（中風）的病患者數字不斷增加，該些疾病的誘發原因，多是病者患有隱性疾病，例如糖尿病或高血壓，其中又以高血壓為大多數，高血壓病已成為澳門單一疾病的頭號殺手。");
+	return NewsItems;
+	
+}
+
+
+function news3()
+{
+	var newsItems=getNewsItems3();
+	addNews(newsItems);
+}
+
+function addNews(newsItems)
+{
+	var cs=document.currentScript;
+	var newsParent=cs.parentNode;
+	var i;
+	var rel=getRefPath();
+	for(i=0;i<newsItems.length;i++){
+		var anchor = document.createElement('a');
+		anchor.className="list-group-item list-group-item-action flex-column align-items-start";
+		anchor.href=rel + "news/"+newsItems[i].newsurl+".html";
 		var div = document.createElement('div');
 		div.className="d-flex w-100 justify-content-between";
 		var h6 = document.createElement('h6');

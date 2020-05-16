@@ -14,3 +14,55 @@ function cycle()
 		h6[i].insertBefore(span,n);
 	}
 }
+//
+function navpage(curPage)
+{
+	var a=document.getElementsByTagName("nav");
+	var na=a[1];
+	var hrels=new Array();
+	hrels[0]="news";
+	hrels[1]="news/news-p2";
+	hrels[2]="news/news-p3";
+	var nav=document.createElement("nav");
+	nav.setAttribute('aria-label','Page navigation example');
+	var ul=document.createElement("ul");
+	ul.className="pagination justify-content-end";
+	var rel=getRefPath();
+	var i;
+	for(i=0;i<hrels.length+2;i++){
+		var ui=document.createElement("ui");
+		ui.className="page-item";
+		if(i== curPage){
+			ui.className ="page-item active";
+		}
+		var a=document.createElement("a");
+		a.className="page-link";
+		if(i==0){
+			a.href="";
+			a.textContent="前一頁";
+			if(curPage == 1){
+				ui.className ="page-item disabled";	
+			}else {
+				a.href=rel + hrels[curPage-2]+".html";		
+			}
+		}else if(i==hrels.length+1){
+			a.href="";
+			a.textContent="下一頁";
+			if(curPage == hrels.length ){
+				ui.className ="page-item disabled";	
+			}else {
+				a.href=rel + hrels[curPage]+".html";				
+			}
+		}else {
+			a.href=rel + hrels[i-1]+".html";
+			a.textContent=i.toString();
+		}
+		ui.appendChild(a);
+		ul.appendChild(ui);
+	}
+	nav.appendChild(ul);
+	var cs=document.currentScript;
+	var navParent=cs.parentNode;
+	navParent.appendChild(nav);
+		
+}
