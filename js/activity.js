@@ -48,7 +48,7 @@ function activity(year)
 
 //	2020.10.13
 //
-function singleActivity()
+function singleActivity(url,pic)
 {
 	var cs=document.currentScript;
 	var curParent=cs.parentNode;
@@ -56,6 +56,12 @@ function singleActivity()
 	div1.className="col-md-4";
 	var div2 = document.createElement('div');
 	div2.className="card mb-4 box-shadow";
+	var anchor = document.createElement('a');
+	anchor.href="activity/" + url +".html";
+	var img = document.createElement('img');
+	img.className="card-img-top";
+	var imsrc="img/photo/w450/" + pic + ".jpg";
+	
 	
 }
 //	
