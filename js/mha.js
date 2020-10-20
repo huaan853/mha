@@ -1,4 +1,7 @@
 // JavaScript Document
+//	2020.10.20修改
+//	把footer加入
+//
 function header()
 {
 	var header = document.createElement('header');
@@ -75,6 +78,7 @@ function menubutton()
 	btn.appendChild(span);
 	return btn;
 }
+
 function menudiv(active)
 {
 	var items =getMenuItems();
@@ -106,6 +110,7 @@ function menudiv(active)
 	div.appendChild(ul);
 	return div;
 }
+
 function menu(active)
 {
 	var cs=document.currentScript;
@@ -118,3 +123,35 @@ function menu(active)
 	nav.appendChild(div);
 	navParent.appendChild(nav);
 }
+
+//	根據當前時間自動更改版權年份
+//	版權符號在html為&copy;
+//	在javascript需要直接寫unicode，\u00A9
+function footer()
+{
+	var cs=document.currentScript;
+	var myDate = new Date();
+	var year= myDate.getFullYear();
+	var ftp=cs.parentNode;
+	var footer=document.createElement("footer");
+	footer.className='footer';
+	footer.textContent="\u00A9" + year.toString() +" 澳門高血壓聯盟";
+	ftp.appendChild(footer);
+	
+//	tohttps();
+}
+//
+//	強迫轉為https
+var	trytimes=0;
+function tohttps()
+{
+	if(trytimes>0)
+		return;
+	var url = window.location.href;
+    if (url.indexOf("https") < 0) {
+        url = url.replace("http:", "https:");
+        window.location.replace(url);
+    }
+	trytimes ++;
+}
+
