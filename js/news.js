@@ -7,11 +7,13 @@ function newsItem(newsurl,newstitle,newsdate,newsabstract)
 	this.newsabstract=newsabstract;
 }
 //	每次追加新聞需要在最前面加。
-//
+//	然後在後面減
+
 function getNewsItems()
 {
 	var NewsItems= new Array();
 	var i=0;
+	NewsItems[i++]= new newsItem("news-2020-5","高血壓聯盟教授心肺復甦術","2020.12.13","澳門高血壓聯盟於十一月二十八日下午假濠江中學禮堂舉行了一場心肺復甦課程");
 	NewsItems[i++]= new newsItem("news-2020-4","高血壓聯盟研討會倡預防","2020.12.3","澳門高血壓聯盟於上月二十八日假皇都酒店聯同專業團體綫上線下舉辦澳門高血壓聯盟十周年系列活動暨高血壓新進展研討會二○二○。");
 	NewsItems[i++]= new newsItem("news-2020-3","精准测量 有效控制 健康长寿","2020.10.17","2020年世界高血压日主题活动");
 
@@ -35,7 +37,11 @@ function newsIndex()
 	var newsParent=cs.parentNode;
 	var newsItems=getNewsItems();
 	var i;
-	for(i=0;i<newsItems.length;i++){
+	var len = newsItems.length;
+	if(len > 10){
+		len = 10;
+	}
+	for(i=0;i<len;i++){
 		var anchor = document.createElement('a');
 		anchor.className="list-group-item list-group-item-action flex-column align-items-start";
 		anchor.href="news/"+newsItems[i].newsurl+".html";
