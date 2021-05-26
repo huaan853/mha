@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0072)http://platform.m-events.cn/cms/app/7/wenzhangDanye.jsp?mid=203&sid=2706 -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title></title>
@@ -33,16 +34,6 @@
      * @param {Object} resultType 返回数据类型 默认 json
      */
     function sendPost(url, data, func, resultType) {
-        //会议是否关闭
-        // $.ajax({
-        //     type: "post",
-        //     dataType: resultType,
-        //     cache: false,
-        //     url: post + "appData/meeting/isOpen.do",
-        //     data: {wei_status: 1, mid: mid},
-        //     success: function (datas, status, xhr) {
-        //         if (datas.success) {
-                    //
                     if (resultType == '' || resultType == undefined) {
                         resultType = 'json';
                     }
@@ -59,17 +50,7 @@
                         func(resultData);
                     }, resultType);
 
-        //         } else {
-        //             ajaxErrorTip(datas.message);
-        //         }
-        //     },
-        //     error: function (data, textStatus, errorThrown) {
-        //         ajaxErrorTip(data.message);
-        //     },
-        //     beforeSend: function () {
-        //     }
-        // });
-    }
+     }
 
     function ajaxErrorTip(msg) {
         $("body").html(msg);
@@ -203,7 +184,6 @@
     <script>
         var content= "";
         $(document).ready(function () {
-			debugger;
             var sid = getQueryString("sid");
             sendPost("appData/subject/getDanye.do", {sid: sid}, function (data) {
                 var template = Handlebars.compile($("#tpl").html());
@@ -224,7 +204,8 @@
             }catch (ex){}
         }
     </script>
-    <script id="tpl" type="text/x-handlebars-template">
+
+		<script id="tpl" type="text/x-handlebars-template">
         {{#each this}}
         <header class="aui-bar aui-bar-nav" style="">
             <a class="aui-pull-left aui-btn"  onclick="window.history.go(-1)">
@@ -259,8 +240,8 @@
             <a class="aui-pull-left aui-btn" onclick="window.history.go(-1)">
                 <span class="aui-iconfont aui-icon-left"></span>
             </a>
-            <div class="aui-title">欢迎辞</div>
-            <a class="aui-pull-right aui-btn aui-btn-outlined" href="http://platform.m-events.cn/cms/app/7/index.jsp?mid=203">
+            <div class="aui-title">歡迎辭</div>
+            <a class="aui-pull-right aui-btn aui-btn-outlined" href="http://www.mha.org.mo">
                 <span class="aui-iconfont aui-icon-home"></span>
             </a>
         </header>
