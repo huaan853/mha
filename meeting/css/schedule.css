@@ -1,0 +1,386 @@
+/*背景色*/
+.bg{
+	background-color: #dce2ed;
+}
+
+/*日程容器*/
+.s-container{
+	
+}
+
+/*菜单空白区，*/
+/*.empty-menu-div{
+	height: 2rem;
+}*/
+/*菜单*/
+.menu-bar{
+	/*position: fixed;
+	top:2.25rem;
+	z-index: 99;*/
+	color:white;
+	width: 100%;
+	padding:.5rem 0 0 0;
+	text-align: center;
+	background-color:rgba(0,0,0,.6);
+}
+.menu-bar li{
+	font-size: 0;
+	margin-right: -4px; 
+	*margin-right: 0;
+	border-radius: 5px 5px 0 0;
+	display: inline-block;
+}
+.menu-bar li.active{
+	background-color: #dce2ed;
+}
+.menu-bar li.active a{
+	color:#033257;
+}
+.menu-bar li a{
+	color:white;
+	font-size: .7rem;
+	line-height: 1.5rem;
+	padding:.1rem .4rem;
+	display: inline-block;
+}
+
+/*日程主体*/
+.s-c-content{
+	font-size: .7rem;
+	padding:.5rem 0;
+}
+.s-c-content .scroll-content{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+.s-c-content .left-bar-menu{
+	/*width: 5.6rem;*/
+	width: 20%;
+	text-align: center;
+	word-break:break-all;
+}
+.s-c-content .left-bar-menu li{
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 5rem;
+	line-height: .8rem;
+	padding:.2rem;
+	margin:0 .1rem .5rem .1rem;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+	background-color: #666;
+}
+/*日程列表*/
+.s-c-session-list{
+	/*width: 12.8rem;*/
+	width: 79%;
+	margin-right: 0.1rem;
+}
+.s-c-s-l{
+	padding: 0;
+	width: 100%;
+	height: 5rem;
+	margin-bottom:.5rem;
+}
+
+.s-c-s-l a{
+	color: white;
+	display: inline-block;
+	width: 6rem;
+	height: 5rem;
+	line-height: 1rem;
+	margin:0 0.1rem;
+	padding:.2rem;
+	text-align: center;
+	font-size: 0.6rem;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+	background-color: #0f793a;
+	vertical-align: top;
+}
+.s-c-s-l a span{
+	color: #666;
+	display: block;
+	display: -webkit-box;
+	height: 3.5rem;
+	text-align: left;
+	padding:0.2rem;
+	line-height: 0.8rem;
+	background-color: #f1f1f1;
+	overflow: hidden;
+	word-wrap: normal;
+    white-space: normal;
+    overflow: hidden;
+    word-break: normal;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/*日程详情*/
+.s-detail-content{
+	font-size:0.8rem;
+	line-height: .8rem;
+	margin:0 0.75rem 2rem 0.75rem;
+	background-color: white;
+}
+.s-detail-content .top-title{
+	position: relative;
+	font-weight: bold;
+	line-height: .8rem;
+	padding:.5rem 0 .5rem 0;
+}
+.s-detail-content .top-title .collect{
+	color: #7b7b7b;
+	position: absolute;
+	top: 0.5rem;
+	right: 0;
+	width: 2.2rem;
+	height: 1rem;
+	padding-left: 0.5rem;
+	display: block;
+	font-size: .7rem;
+	font-weight: normal;
+	text-align: right;
+}
+.s-detail-content .top-title .collect:before{
+	content: '';
+	display: block;
+	width: 0.7rem;
+	height: 0.7rem;
+	left:0;
+	position: absolute;
+	background: url(../images/menu_collect_icon.png) no-repeat 0 0;
+	background-size: cover;
+}
+.s-detail-content .top-title .collect.active{
+	color: #f1b108;
+}
+.s-detail-content .top-title .collect.active:before{
+	background: url(../images/menu_collect_icon_press.png) no-repeat 0 0;
+	background-size: cover;
+}
+.s-detail-content .address-datetime{
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid #dce2ed;
+}
+.s-detail-content .address-datetime li{
+	padding:0.1rem 0;
+}
+.s-detail-content .block-title{
+	text-indent: 0.5rem;
+	line-height: 1.5rem;
+	margin:1rem 0;
+	border-radius: 5px;
+	background-color: #dce2ed;
+}
+.s-detail-content .sesion-detail{
+	text-align: center;
+}
+.s-detail-content .sesion-detail dt
+{
+	color: #f90;
+	border-radius: 5px 5px 0 0;
+	line-height: 2rem;
+	background-color: #dce2ed;
+}
+.s-detail-content .sesion-detail table{
+	font-size: 0.6rem;
+	border-radius: 5px;
+	border-bottom:1px solid #dce2ed;
+	border-left:1px solid #dce2ed;
+}
+.s-detail-content .sesion-detail .th td{
+	color: white;
+	font-size: 0.7rem;
+	line-height: 2rem;
+	border-color: #4b90c7;
+	background-color: #0665b2;
+}
+.s-detail-content .sesion-detail .th td:frist-child(){
+	border-color: #dce2ed;
+}
+.s-detail-content .sesion-detail td{
+	padding:0.5rem .2rem;
+	border-top:1px solid #dce2ed;
+	border-right:1px solid #dce2ed;
+}
+.s-detail-content .sesion-detail tr td:last-child{
+	text-align: left;
+}
+.s-detail-content .sesion-detail tr:nth-child(2n){
+	background-color: #f5f5f5;
+}
+
+/*日程检索*/
+.search-content{
+	padding: 0.3rem 0 2rem 0;
+	background-color: #dce2ed;
+}
+.search-content .h{
+	display: none;
+}
+.search-content .list-menu{
+	margin:0 .75rem;
+}
+.search-content .list-menu a{
+	color: #666;
+	display: block;
+	position: relative;
+	font-size: 0.6rem;
+	padding: 0.7rem 2rem 0.7rem 0.5rem;
+	line-height: 1rem;
+	/*margin:0 0 0.5rem 0;*/
+	border-bottom: 1px solid #c3cede;
+	background-color: #e8ecf3
+}
+.search-content .list-menu a:nth-child(odd){
+	background-color: #dce2ed;
+}
+.search-content .list-menu a:nth-child(3n){
+	background-color: #fdfefe;
+}
+.search-content .list-menu a:after{
+	position: absolute;
+	right: 1rem;
+	top: 50%;
+	content: '';
+	display: block;
+	width: .5rem;
+	height: .5rem;
+	margin-top: -0.25rem;
+	border-right: 1px solid #999;
+	border-top: 1px solid #999;
+
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg); 	/* IE 9 */
+	-moz-transform:rotate(45deg); 	/* Firefox */
+	-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+}
+.search-content .list-menu a:active{
+	color: #fff;
+	background-color: #0665b2;
+}
+.search-content .time-li{
+	padding:1rem 0.75rem;
+}
+.search-content .time-li li{
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	padding-bottom: 1rem;
+	justify-content: space-between;
+}
+.search-content .time-li span{
+	width:5rem;
+	text-align: center;
+	display: block;
+	font-size: 0.7rem;
+}
+.search-content .time-li select,
+.search-content .time-li input{
+	font-size: 0.7rem;
+	height: 2rem;
+	border:1px solid #a5b5d3;
+	background-color: white;
+	border-radius: 5px;
+	padding:0 1rem 0 1rem;
+}
+.search-content .time-li select{
+	padding:0 2rem 0 1rem;
+	height: 2rem;
+	background:white url(../images/select_bg.png) no-repeat right center;
+}
+.search-content .time-li .btn-wrap {
+
+}
+.search-content .time-li .btn-wrap input:active{
+	opacity: 0.7;
+}
+.search-content .time-li .btn-wrap input{
+	color: white;
+	text-align: center;
+	width: 50%;
+	height: 2rem;
+	border:0;
+	border-radius: 0;
+}
+.search-content .time-li .btn-wrap input.submit{
+	background-color: #2982d6;
+	border-radius: 5px 0 0 5px;
+}
+.search-content .time-li .btn-wrap input[type=reset]{
+	background-color: #f39801;
+	border-radius:0 5px 5px 0;
+}
+
+.time-datetime-content .list-menu a{
+	padding: 0;
+	color: #0665b2;
+	margin-bottom: 0.5rem;
+	border-bottom: 0;
+}
+.time-datetime-content .list-menu li,
+.time-datetime-content .list-menu li:nth-child(even) a{
+	background-color: #fdfefe;
+}
+.time-datetime-content .list-menu li{
+	font-size: 0.7rem;
+	position: relative;
+	padding:1rem 2rem 1rem 0.75rem;
+	background-color: none;
+	border-bottom: 1px solid #c3cede;
+	background-color: #fdfefe;
+}
+/*
+	border-bottom: 1px solid #c3cede;
+	background-color: #e8ecf3
+}
+.search-content .list-menu a:nth-child(odd){
+	background-color: #dce2ed;
+}
+.search-content .list-menu a:nth-child(3n){
+	background-color: #fdfefe;
+}
+ */
+.time-datetime-content .list-menu li:nth-child(odd),
+.time-datetime-content .list-menu li:nth-child(odd) a{
+	background-color: #e8ecf3;
+}
+.time-datetime-content .list-menu a:after{
+	display: none;
+}
+.time-datetime-content .list-menu li p{
+	font-size: 0.6rem;
+	margin-top: 0.2rem;
+
+}
+.time-datetime-content .list-menu li:after{
+	position: absolute;
+	right: 1rem;
+	top: 50%;
+	content: '';
+	display: block;
+	width: .5rem;
+	height: .5rem;
+	margin-top: -0.25rem;
+	border-right: 1px solid #999;
+	border-top: 1px solid #999;
+
+	transform:rotate(45deg);
+	-ms-transform:rotate(45deg); 	/* IE 9 */
+	-moz-transform:rotate(45deg); 	/* Firefox */
+	-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+}
+.time-datetime-content .list-menu li:active,
+.time-datetime-content .list-menu li:active a{
+	color: #fff !important;
+	background-color: #0665b2;
+}
+.time-datetime-content .list-menu li:active p{
+	color: #fff !important;
+	background-color: #0665b2;
+	opacity: 0.7;
+}
