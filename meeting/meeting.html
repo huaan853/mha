@@ -46,16 +46,6 @@
      * @param {Object} resultType 返回数据类型 默认 json
      */
     function sendPost(url, data, func, resultType) {
-        //会议是否关闭
-        // $.ajax({
-        //     type: "post",
-        //     dataType: resultType,
-        //     cache: false,
-        //     url: post + "appData/meeting/isOpen.do",
-        //     data: {wei_status: 1, mid: mid},
-        //     success: function (datas, status, xhr) {
-        //         if (datas.success) {
-                    //
                     if (resultType == '' || resultType == undefined) {
                         resultType = 'json';
                     }
@@ -72,16 +62,6 @@
                         func(resultData);
                     }, resultType);
 
-        //         } else {
-        //             ajaxErrorTip(datas.message);
-        //         }
-        //     },
-        //     error: function (data, textStatus, errorThrown) {
-        //         ajaxErrorTip(data.message);
-        //     },
-        //     beforeSend: function () {
-        //     }
-        // });
     }
 
     function ajaxErrorTip(msg) {
@@ -550,7 +530,7 @@
         
         <div class="footerBox" id="foot"><p><span style="color: #ecf0f1;"><strong>&nbsp;</strong></span></p>
 <p><span style="color: #ecf0f1;"><strong>&nbsp;</strong></span></p>
-<p style="color: #027bb1; margin-bottom: .1rem;"><span style="color: #027bb1;">平台支持：博创会务</span></p></div>
+<p style="color: #027bb1; margin-bottom: .1rem;"><span style="color: #027bb1;">網站技術支持：澳門華安科技</span></p></div>
     </div>
 </div>
 	
