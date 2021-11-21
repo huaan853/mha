@@ -26,13 +26,20 @@ function yearCount(year)
 		cnt=2;
 		break;
 	case 	2020:
-		cnt=11;
+		cnt=11;			
 		break;
+	case 	2021:
+		cnt=3;
+		break;	
 	}
 	return cnt;
 }
+//
+//	活動入口
+//
 function activity(year)
 {
+	debugger;
 	var cnt=yearCount(year);
 	for(var i=0;i < cnt; i++)
 	{
@@ -48,7 +55,7 @@ function activity(year)
 
 //	2020.10.13
 //
-function singleActivity(url,pic)
+function singleActivity(url,pic,h)
 {
 	var cs=document.currentScript;
 	var curParent=cs.parentNode;
@@ -61,6 +68,14 @@ function singleActivity(url,pic)
 	var img = document.createElement('img');
 	img.className="card-img-top";
 	var imsrc="img/photo/w450/" + pic + ".jpg";
+	img.src=imsrc;
+	img.style="width: 100%; display: block;";
+	img.alt=h;
+	var div3 = document.createElement('div');
+	div3.className="card-body";
+	var p = document.createElement('p');
+	p.className="card-text";
+	
 	
 	
 }
