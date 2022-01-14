@@ -29,6 +29,8 @@ function getNewsItems()
 
 	NewsItems[i++]= new newsItem("news-2020-2","高血壓聯盟學術研討倡預防","2020.10.15","為慶祝中國及世界高血壓日活動，澳門高血壓聯盟於本月九日假皇都酒店舉辦澳門高血壓聯盟十周年系列活動暨二○二○高血壓診治新進展學術研討會。");
 	NewsItems[i++]= new newsItem("news-2020-1","控制情緒防高血壓","2020.5.15","馮秀華接受澳門日報專訪");
+	NewsItems[i++]= new newsItem("news-2020-6","澳門國際醫療隊赴非洲抗疫","2020.5.14","澳門國際應急醫療隊5名隊員13日下午飛往重慶聯同重慶醫療專家組，出發前往非洲國家阿爾及利亞執行抗疫任務。");
+	
 	NewsItems[i++]= new newsItem("news-2019-4","高血壓聯盟赴粵交流","2019.11.15","聯盟組織會員到廣州參觀廣東省人民醫院、廣東省心血管病研究所及廣東高血壓研究基地。");
 
 	NewsItems[i++]= new newsItem("news-2019-3","慶祝中國高血壓日活動","2019.9.28","為慶祝中國高血壓日活動，由澳門高血壓聯盟主辦的「高血壓診治新進展研討會」於2019年9月28日晚假澳門皇冠假日酒店舉行舉行。");
@@ -107,37 +109,19 @@ function newsIndex()
 	}
 	
 }
+function news_index(index)
+{
+	var newsItems=getNewsItems();
+	var ns=(index-1)*10;
+	newsItems = itemGroup(newsItems,ns);
+	addNews(newsItems);
+}
 
 function news()
 {
-//	var cs=document.currentScript;
-//	var newsParent=cs.parentNode;
 	var newsItems=getNewsItems();
 	newsItems = itemGroup(newsItems,0);
 	addNews(newsItems);
-/*	
-	var i;
-	for(i=0;i<newsItems.length;i++){
-		var anchor = document.createElement('a');
-		anchor.className="list-group-item list-group-item-action flex-column align-items-start";
-		anchor.href="news/"+newsItems[i].newsurl+".html";
-		var div = document.createElement('div');
-		div.className="d-flex w-100 justify-content-between";
-		var h6 = document.createElement('h6');
-		h6.className="mb-1";
-		h6.textContent=newsItems[i].newstitle;
-		var small = document.createElement('small');
-		small.textContent=newsItems[i].newsdate;
-		div.appendChild(h6);
-		div.appendChild(small);
-		var p = document.createElement('p');
-		p.className="mb-1";
-		p.textContent=newsItems[i].newsabstract;
-		anchor.appendChild(div);
-		anchor.appendChild(p);
-		newsParent.appendChild(anchor);
-	}
-*/
 }
 
 function news2()
@@ -146,7 +130,6 @@ function news2()
 	newsItems = itemGroup(newsItems,10);
 	addNews(newsItems);
 }
-
 
 function news3()
 {
