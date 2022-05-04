@@ -30,12 +30,16 @@ function yearCount(year)
 		break;
 	case 	2021:
 		cnt=4;
-		break;	
+		break;
+	case	12022:
+		cnt=3;
+		break;
 	}
 	return cnt;
 }
 //
 //	活動入口
+//	用於世界高血壓日
 //
 function activity(year)
 {
@@ -51,6 +55,26 @@ function activity(year)
 		document.write("<img class='card-img-top' src='../img/photo/w450" + fn + "_450.jpg' style='width: 100%; display: block;' alt='" + year +"年世界高血壓日'>");
 		document.write("</a> </div></div>");		
 	}
+}
+
+function activityOther(year,altShow)
+{
+	debugger;
+	
+	var cnt=yearCount(year);
+	var ryear=year%10000;
+	var path="/"+ ryear;
+	for(var i=0;i < cnt; i++)
+	{
+		index= i+1;
+		fn = "/" + year +"_" + index;
+		document.write("<div class='col-md-4'>");
+		document.write("<div class='card mb-4 box-shadow'>");
+		document.write("<a href='../img/photo/w1200" + path + fn +".jpg' target='_blank'>");
+		document.write("<img class='card-img-top' src='../img/photo/w450" + path + fn + "_450.jpg' style='width: 100%; display: block;' alt='" + year +"年世界高血壓日'>");
+		document.write("</a> </div></div>");		
+	}
+	
 }
 
 //	2020.10.13
