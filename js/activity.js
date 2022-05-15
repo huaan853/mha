@@ -34,6 +34,8 @@ function yearCount(year)
 	case	12022:
 		cnt=3;
 		break;
+	case	22022:
+			cnt=2;
 	}
 	return cnt;
 }
@@ -103,9 +105,14 @@ function singleActivity(url,pic,h)
 	
 	
 }
-//	
+//	由index页面调入
+//	url表示在活动目录的文件名
+//	h表示题目
+//	d表示日期
+//
 function mainActivity(url,h,d)
 {
+	debugger;
 	var cs=document.currentScript;
 	var curParent=cs.parentNode;
 	var anchor = document.createElement('a');
