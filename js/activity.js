@@ -35,7 +35,8 @@ function yearCount(year)
 		cnt=3;
 		break;
 	case	22022:
-			cnt=3;
+		cnt=6;
+		break;
 	}
 	return cnt;
 }
