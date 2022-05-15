@@ -80,28 +80,59 @@ function activityOther(year,altShow)
 }
 
 //	2020.10.13
+//	2022.5.15完成测试
 //
-function singleActivity(url,pic,h)
+//	在activity.html调用
+//	url引用网页
+//	pic图片
+//	h标题
+//	d日期
+//
+function singleActivity(url,pic,h,d)
 {
 	var cs=document.currentScript;
 	var curParent=cs.parentNode;
 	var div1 = document.createElement('div');
 	div1.className="col-md-4";
+	curParent.appendChild(div1);
 	var div2 = document.createElement('div');
 	div2.className="card mb-4 box-shadow";
+	div1.appendChild(div2);
+
 	var anchor = document.createElement('a');
 	anchor.href="activity/" + url +".html";
+	div2.appendChild(anchor);
 	var img = document.createElement('img');
 	img.className="card-img-top";
 	var imsrc="img/photo/w450/" + pic + ".jpg";
 	img.src=imsrc;
 	img.style="width: 100%; display: block;";
 	img.alt=h;
+	anchor.appendChild(img);
 	var div3 = document.createElement('div');
 	div3.className="card-body";
+	div2.appendChild(div3);
 	var p = document.createElement('p');
 	p.className="card-text";
+	p.textContent = h;
+	div3.appendChild(p);
+	var div4 = document.createElement('div');
+	div4.className="d-flex justify-content-between align-items-center";
+	div3.appendChild(div4);
+	var button = document.createElement('button');
+	button.type='button';
+	button.className='btn btn-sm mc_btn_bgRed';
+	div4.appendChild(button);
+	var ab = document.createElement('a');
+	ab.className='mc_btn_link';
+	ab.href="activity/" + url +".html";
+	ab.textContent='查看活動照片';
+	button.appendChild(ab);
+	var small = document.createElement('small');
+	small.className='text-muted';
+	small.textContent = d;
 	
+	div4.appendChild(small);
 	
 	
 }
@@ -112,7 +143,6 @@ function singleActivity(url,pic,h)
 //
 function mainActivity(url,h,d)
 {
-	debugger;
 	var cs=document.currentScript;
 	var curParent=cs.parentNode;
 	var anchor = document.createElement('a');
