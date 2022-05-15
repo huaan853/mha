@@ -141,13 +141,36 @@ function news3()
 	addNews(newsItems);
 }
 
-function addNews(newsItems)
+function jsNews(index)
 {
 	var cs=document.currentScript;
-	var newsParent=cs.parentNode;
+	var newsParent=cs.parentNode;;
+
+	var div = document.createElement('div');
+	div.className="list-group";
+	newsParent.appendChild(div);
+	var newsItems=getNewsItems();
+	var ns=(index-1)*10;
+	newsItems = itemGroup(newsItems,ns);
+	addNews(newsItems,div);
+	cycleNo = ns+1;
+	cycle();
+		
+}
+
+function addNews(newsItems,pn)
+{
+	var cs=document.currentScript;
+	var newsParent;
+	if(pn === undefined)
+		newsParent =cs.parentNode;
+	else 
+		newsParent = pn;
 	var i;
 	var rel=getRefPath();
 	for(i=0;i<newsItems.length;i++){
+		if(newsItems[i] === undefined)
+			break;
 		var anchor = document.createElement('a');
 		anchor.className="list-group-item list-group-item-action flex-column align-items-start";
 		anchor.href=rel + "news/"+newsItems[i].newsurl+".html";

@@ -14,7 +14,8 @@ function cycle()
 		h6[i].insertBefore(span,n);
 	}
 }
-//
+//	2022.5.15
+//	
 function navpage(curPage)
 {
 	var a=document.getElementsByTagName("nav");
@@ -23,6 +24,7 @@ function navpage(curPage)
 	hrels[0]="news";
 	hrels[1]="news/news-p2";
 	hrels[2]="news/news-p3";
+	hrels[3]="news/news-p4";
 	var nav=document.createElement("nav");
 	nav.setAttribute('aria-label','Page navigation example');
 	var ul=document.createElement("ul");
