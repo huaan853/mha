@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="../css/aui.css">
+    <link rel="stylesheet" href="../css/new_base.css">
+ 	<script src="./js/jquery-3.6.0..js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/handlebars-v4.0.10.js"></script>
+    <script type="text/javascript" src="../js/handlebars-addMethod.js"></script>
+    
+
+<script>
+    var post = "/cms/";
+    //会议ID
+    var mid = '203';
+    if (mid == '') {
+        window.location.href = "error.jsp";
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return '';
+    }
+
+    /**
+     * 返回请求数据的最终结果
+     * @param {Object} url 请求链接
+     * @param {Object} data 请求数据
+     * @param {Object} resultType 返回数据类型 默认 json
+     */
+    function sendPost(url, data, func, resultType) {
+                    if (resultType == '' || resultType == undefined) {
+                        resultType = 'json';
+                    }
+                    //
+                    $.extend(data, {
+                        mid: mid,
+                        wei_status: 1,
+                        //语言
+                        lang: 1,
+                        status: 1
+                    });
+                    //获取数据
+                    $.post(post + url, data, function (resultData) {
+                        func(resultData);
+                    }, resultType);
+
+     }
+
+    function ajaxErrorTip(msg) {
+        $("body").html(msg);
+        return '';
+    }
+
+    /**
+     * 获取提交的数据
+     * @param obj
+     * @returns {{}}
+     */
+    function getParameterMap(obj) {
+        var setmultivalue = function (val, name, value) {
+            if (!value) value = '';
+            if (val[name] === undefined) {
+                val[name] = value;
+            } else {
+                if (val[name].constructor == Array) {
+                    val[name].push(value)
+                } else {
+                    var v = val[name];
+                    val[name] = [];
+                    val[name].push(v)
+                    val[name].push(value)
+                }
+            }
+        };
+        var val = {};
+        obj.find('input').each(function () {
+            if (!this.name || !this.type) {
+                return
+            }
+            var type = this.type;
+            if (type == 'checkbox' || type == 'radio') {
+                if (this.checked) {
+                    setmultivalue(val, this.name, this.value);
+                }
+                return;
+            }
+            setmultivalue(val, this.name, this.value);
+        });
+        obj.find('select').each(function () {
+            var value = $(this).val();
+            if (value && value.constructor == Array) {
+                value = value[0];
+            }
+            setmultivalue(val, this.name, value);
+        });
+        obj.find('textarea').each(function () {
+            var va = $.trim($(this).val());
+            setmultivalue(val, this.name, va);
+        });
+        obj.find('img').each(function () {
+            if (!this.name) {
+                return
+            }
+            var va = $.trim($(this).attr('src'));
+            setmultivalue(val, this.name, va);
+        })
+
+        return val;
+    }
+    ;
+
+    function setUserinfo(data) {
+        localStorage.setItem("ashsadasdasdasuydasuysadhasnjkdasjds", JSON.stringify(data));
+    }
+
+    function getUserinfo(key) {
+        return JSON.parse(localStorage.getItem("ashsadasdasdasuydasuysadhasnjkdasjds"));
+    }
+
+    function clearUserinfo() {
+        localStorage.removeItem("ashsadasdasdasuydasuysadhasnjkdasjds");
+        window.location.reload();
+    }
+
+    /**
+     * 右上角弹出层
+     * @param {Object} buttons 弹出层列表参数
+     */
+    function showPopup(buttons, func) {
+        popup.init({
+            frameBounces: true, //当前页面是否弹动，（主要针对安卓端）
+            location: 'top-right', //位置，top(默认：顶部中间),top-left top-right,bottom,bottom-left,bottom-right
+            buttons: buttons,
+        }, function (ret) {
+            func(ret);
+        })
+    }
+
+    /*会议配置项*/
+    function getMeetingConfig_() {
+        sendPost("appData/meeting/getMeeting.do", {}, function (data) {
+            if (data != null && data != undefined) {
+                var myCover = data;
+                var $body = $("body")
+                var $bgBottom = $(".bgBottom")
+                var $jszc = $(".jszc")
+                var $index_carousel = $(".index-carousel")
+                //设置背景
+                $body.css({'background': 'url(' + myCover.cn_bg_img + ') center bottom no-repeat', 'background-size': '100%'});
+                // console.log(data)cn_banner2_img
+                if(myCover.cn_banner2_img){
+                    $bgBottom.html('<img src="' + myCover.cn_banner2_img + '" width="100%" />');
+                }
+                if(myCover.cn_jishu_img){
+                    $jszc.html('<img src="' + myCover.cn_jishu_img + '" width="100%" />');
+                }
+                if(myCover.cn_banner_top){
+                    $index_carousel.attr('style', 'margin-top:'+ myCover.cn_banner_top)
+                }
+                if(myCover.cn_name){
+                    $("#meetingtitleid").val(myCover.cn_name);
+                    console.log("myCover.cn_name="+myCover.cn_name);
+                    document.title = myCover.cn_name;
+                }
+            }
+        });
+
+        // 设置底部链接
+        sendPost('appData/meeting/getWeiNetword.do', {}, function (data) {
+            if(data.is_show ==1){
+                $("#foot").html(data.show_content);
+            }
+        })
+    }
+
+</script>
+
+    <script>
+        var content= "";
+        $(document).ready(function () {
+            var sid = getQueryString("sid");
+            sendPost("appData/subject/getDanye.do", {sid: sid}, function (data) {
+                var template = Handlebars.compile($("#tpl").html());
+                content = data.content;
+                var data = {
+                    data: data
+                };
+                $("body").append(template(data));
+            })
+        })
+        function setIframeHeight(id){
+            var iframe = document.getElementById(id);
+            try{
+                var bHeight = iframe.contentWindow.document.body.scrollHeight;
+                var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+                var height = Math.min(bHeight, dHeight);
+                iframe.height = height+20;
+            }catch (ex){}
+        }
+    </script>
+
+		<script id="tpl" type="text/x-handlebars-template">
+        {{#each this}}
+        <header class="aui-bar aui-bar-nav" style="">
+            <a class="aui-pull-left aui-btn"  onclick="window.history.go(-1)">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a>
+            <div class="aui-title">{{sTitle}}</div>
+            <a class="aui-pull-right aui-btn aui-btn-outlined" href="index.jsp?mid=203">
+                <span class="aui-iconfont aui-icon-home"></span>
+            </a>
+        </header>
+        <section class="aui-content-padded new-content">
+            <div class="aui-card-list" style="padding: 0">
+                              
+                <div >
+
+
+                    <iframe  src="./content.jsp" width="100%" style="min-height: 100%" frameborder="0"  scrolling ="no" id="iframeid"></iframe>
+                </div>
+                
+                
+                
+            </div>
+        </section>
+        {{/each}}
+    </script>
+</head>
+
+<body>
+    <header class="aui-bar aui-bar-nav" style="">
+            <a class="aui-pull-left aui-btn" onclick="window.history.go(-1)">
+                <span class="aui-iconfont aui-icon-left"></span>
+            </a>
+            <div class="aui-title">歡迎辭</div>
+            <a class="aui-pull-right aui-btn aui-btn-outlined" href="http://www.mha.org.mo">
+                <span class="aui-iconfont aui-icon-home"></span>
+            </a>
+        </header>
+        <section class="aui-content-padded new-content">
+            <div class="aui-card-list" style="padding: 0">               
+                
+                <div>
+                    <iframe src="./content.html" width="100%" style="min-height: 100%" frameborder="0" scrolling="no" id="iframeid" height="3649"></iframe>
+                </div>
+            </div>
+        </section>
+    </body></html>

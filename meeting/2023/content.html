@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/handlebars-v4.0.10.js"></script>
+    <script type="text/javascript" src="../js/handlebars-addMethod.js"></script>
+
+    <style>
+        #contentid img{
+            max-width:100%;
+            height:auto;
+        }
+    </style>
+    <script>
+        var count = 1;
+        var timer;
+        $(document).ready(function () {
+            var sid = window.parent.content;
+            $("#contentid").append(sid).find('img').each(function(){
+                //2020-06-16 11:48 ah lantiansj
+                $(this).parents('p').css('margin', '-0.75rem');
+            });
+            timer = setInterval(function(){
+                countRefresh();
+            },500);
+        })
+        function countRefresh(){
+            console.log("cishu"+count);
+            if(count <10){
+                parent.window.setIframeHeight("iframeid");
+                count++;
+            }else{
+                clearInterval(timer);
+            }
+        }
+        var processor={
+            timeoutId:null,
+            performProcessing:function(){
+                //实际执行的代码
+                parent.window.setIframeHeight("iframeid")
+            },
+            process:function(){
+                clearTimeout(this.timeoutId);
+                var that=this;
+                this.timeoutId=setTimeout(function(){
+                    that.performProcessing();
+                },100);
+            }
+        }
+        //使用
+        window.onresize=function(){
+            processor.process();
+        }
+    </script>
+</head>
+<body id="contentid" style="margin:0;padding: 0.75rem;overflow-y:auto">
+
+
+<p style="margin: -0.75rem;"><img src="./image/welcome.png" alt="" width="100%"></p></body></html>

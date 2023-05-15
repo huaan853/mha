@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)http://platform.m-events.cn/cms/app/7/index.jsp?mid=203 -->
+<html style="font-size: 40px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title id="meetingtitleid">澳門高血壓聯盟年會暨國際高血壓診治新進展研討會2023</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="stylesheet" href="../css/swiper.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/timeTo.css">	
+	<script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+    <script type="text/javascript" src="../js/handlebars-v4.0.10.js"></script>
+    <script type="text/javascript" src="../js/handlebars-addMethod.js"></script>
+    <script type="text/javascript" src="../js/swiper-3.4.2.jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.bay-window.js"></script>
+    
+    <script type="text/javascript" src="../js/jquery.time-to.js"></script>
+    
+
+<script>
+    var post = "/mha/MHA20210207/2021/";
+    //会议ID
+    var mid = '203';
+    if (mid == '') {
+        window.location.href = "error.jsp";
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return '';
+    }
+
+    /**
+     * 返回请求数据的最终结果
+     * @param {Object} url 请求链接
+     * @param {Object} data 请求数据
+     * @param {Object} resultType 返回数据类型 默认 json
+     */
+    function sendPost(url, data, func, resultType) {
+                    if (resultType == '' || resultType == undefined) {
+                        resultType = 'json';
+                    }
+                    //
+                    $.extend(data, {
+                        mid: mid,
+                        wei_status: 1,
+                        //语言
+                        lang: 1,
+                        status: 1
+                    });
+                    //获取数据
+                    $.post(post + url, data, function (resultData) {
+                        func(resultData);
+                    }, resultType);
+
+    }
+
+    function ajaxErrorTip(msg) {
+        $("body").html(msg);
+        return '';
+    }
+
+    /**
+     * 获取提交的数据
+     * @param obj
+     * @returns {{}}
+     */
+    function getParameterMap(obj) {
+        var setmultivalue = function (val, name, value) {
+            if (!value) value = '';
+            if (val[name] === undefined) {
+                val[name] = value;
+            } else {
+                if (val[name].constructor == Array) {
+                    val[name].push(value)
+                } else {
+                    var v = val[name];
+                    val[name] = [];
+                    val[name].push(v)
+                    val[name].push(value)
+                }
+            }
+        };
+        var val = {};
+        obj.find('input').each(function () {
+            if (!this.name || !this.type) {
+                return
+            }
+            var type = this.type;
+            if (type == 'checkbox' || type == 'radio') {
+                if (this.checked) {
+                    setmultivalue(val, this.name, this.value);
+                }
+                return;
+            }
+            setmultivalue(val, this.name, this.value);
+        });
+        obj.find('select').each(function () {
+            var value = $(this).val();
+            if (value && value.constructor == Array) {
+                value = value[0];
+            }
+            setmultivalue(val, this.name, value);
+        });
+        obj.find('textarea').each(function () {
+            var va = $.trim($(this).val());
+            setmultivalue(val, this.name, va);
+        });
+        obj.find('img').each(function () {
+            if (!this.name) {
+                return
+            }
+            var va = $.trim($(this).attr('src'));
+            setmultivalue(val, this.name, va);
+        })
+
+        return val;
+    }
+    ;
+
+    function setUserinfo(data) {
+        localStorage.setItem("ashsadasdasdasuydasuysadhasnjkdasjds", JSON.stringify(data));
+    }
+
+    function getUserinfo(key) {
+        return JSON.parse(localStorage.getItem("ashsadasdasdasuydasuysadhasnjkdasjds"));
+    }
+
+    function clearUserinfo() {
+        localStorage.removeItem("ashsadasdasdasuydasuysadhasnjkdasjds");
+        window.location.reload();
+    }
+
+    /**
+     * 右上角弹出层
+     * @param {Object} buttons 弹出层列表参数
+     */
+    function showPopup(buttons, func) {
+        popup.init({
+            frameBounces: true, //当前页面是否弹动，（主要针对安卓端）
+            location: 'top-right', //位置，top(默认：顶部中间),top-left top-right,bottom,bottom-left,bottom-right
+            buttons: buttons,
+        }, function (ret) {
+            func(ret);
+        })
+    }
+
+    /*会议配置项*/
+    function getMeetingConfig_() {
+        sendPost("appData/meeting/getMeeting.do", {}, function (data) {
+            if (data != null && data != undefined) {
+                var myCover = data;
+                var $body = $("body")
+                var $bgBottom = $(".bgBottom")
+                var $jszc = $(".jszc")
+                var $index_carousel = $(".index-carousel")
+                //设置背景
+                $body.css({'background': 'url(' + myCover.cn_bg_img + ') center bottom no-repeat', 'background-size': '100%'});
+                // console.log(data)cn_banner2_img
+                if(myCover.cn_banner2_img){
+                    $bgBottom.html('<img src="' + myCover.cn_banner2_img + '" width="100%" />');
+                }
+                if(myCover.cn_jishu_img){
+                    $jszc.html('<img src="' + myCover.cn_jishu_img + '" width="100%" />');
+                }
+                if(myCover.cn_banner_top){
+                    $index_carousel.attr('style', 'margin-top:'+ myCover.cn_banner_top)
+                }
+                if(myCover.cn_name){
+                    $("#meetingtitleid").val(myCover.cn_name);
+                    console.log("myCover.cn_name="+myCover.cn_name);
+                    document.title = myCover.cn_name;
+                }
+            }
+        });
+
+        // 设置底部链接
+        sendPost('appData/meeting/getWeiNetword.do', {}, function (data) {
+            if(data.is_show ==1){
+                $("#foot").html(data.show_content);
+            }
+        })
+    }
+
+</script>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .bodyBox{
+        min-height:100%;
+        overflow-y: auto;
+
+    }
+    .topImgBox img{
+        width:100%;
+        height:auto;
+    }
+    .index-carousel{
+        width: 100%;
+        height: auto !important;
+    }
+    .swiper-slide{
+    	background:  transparent !important
+    }
+    @media screen and (min-width: 992px){
+        .imgBox img{
+            width:200px;
+            height:auto;
+        }
+        .imgBox{
+            margin-bottom:30px;
+        }
+    }
+    @media screen and (max-width: 992px){
+        .bodyBox{
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+        }
+        .imgBox img{
+            width:90%;
+            height:auto;
+        }
+        .imgBox{
+            text-align: center;
+            padding-bottom:10%;
+        }
+        .colorWhite{
+            color:#ffffff;
+        }
+    }
+    .footerBox{
+        position: absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        text-align: center;
+    }
+    .bannerItemBox{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .topContentBox{
+        position: relative;
+        padding-bottom: 60px;
+        min-height:100%;
+        background-size: cover !important;
+    }
+    .needToCss{
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 1.4rem;
+    }
+    .backgroundWidth100{
+        background-size: 100% auto !important;
+    }
+    .needToCss2{
+        font-weight: bold !important;
+        font-size: 16px !important;
+        padding-bottom: 5px !important;
+        padding-top: 5px !important;
+    }
+    .topContentBox2{
+        position: relative;
+        padding-bottom: 10px;
+        min-height:100%;
+        background-size: cover !important;
+    }
+    .fontColor{
+        color:#8f0100;
+    }
+    .imgaddcss{
+        width:70% !important;
+        height:auto;
+    }
+
+    .singup{
+        width: 100%;
+        height: 70px;
+        padding: 0 30px;
+        position: relative;
+    }
+
+    .singup img{
+        position: absolute;
+        margin-top: -40px;
+        float: left;
+        height: 100%;
+    }
+    
+    body { /* IOS禁止微信调整字体大小 */
+        -webkit-text-size-adjust: 100% !important;
+        text-size-adjust: 100% !important;
+        -moz-text-size-adjust: 100% !important;
+    }
+    /*#subjects{*/
+    /*    display: flex;*/
+    /*    justify-content:flex-start;*/
+    /*    flex-wrap:wrap;*/
+    /*}*/
+    /*#subjects .col-xs-4{*/
+    /*    float: unset;*/
+    /*}*/
+    /*//改成轮播图的话打开下面*/
+    /*ccif修改，以后该回来2020-04-17lxh */
+    .nobackground{
+        background-image:none !important;
+    }
+
+    .countdown{
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+    }
+
+    .countdown>span{
+        line-height: 1.5;
+        color: red;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .countdown_main{
+        display: flex;
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    
+    .timeTo figure>div{
+        height: 24px !important;
+        line-height: 22px !important;
+    }
+
+    .timeTo figure figcaption{
+        color: #000;
+    }
+    .swiper-pagination{
+    	display: none !important;
+    }
+</style></head>
+
+
+
+
+
+<body class="index-bg" style="background: url(&quot;../image/bg1.jpg&quot;) center bottom / 100% no-repeat;">
+
+<div class="bodyBox" style="height: 100%; min-height: 100%; overflow: auto;">
+    <div class="topContentBox" id="bods">
+
+                <!-- <div class="topImgBox" id="topImg">
+                </div> -->
+
+        
+        <div class="index-carousel" style="margin-top:0rem">
+            <div class="banner-cont swiper-container swiper-container-horizontal" style="width:100%">
+        				<img src="../image/mha2023-1.jpg">
+																										
+                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+					<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+				</div>
+            </div>
+        </div>
+
+        <div class="countdown" style="display: none;">
+            <span>距离大会开始时间</span>
+            <div class="countdown_main timeTo timeTo-black" style="font-family: Verdana, sans-serif; font-size: 20px;">
+				<figure style="width:69px">
+				<div class="first" style="width:19px; height:22px;">
+				<ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div>
+				<div style="width:19px; height:22px;"><ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div>
+				<div style="width:19px; height:22px;margin-right:8px"><ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div><figcaption style="font-size:12px;padding-right:8px">天</figcaption></figure>
+				<figure style="max-width:41px">
+				<div class="first" style="width:19px; height:22px;"><ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div>
+				<div style="width:19px; height:22px;"><ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div>
+				<figcaption style="font-size:12px;">时</figcaption></figure>
+				<span>:</span>
+				<figure style="max-width:41px"><div class="first" style="width:19px; height:22px;">
+					<ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div>
+					<div style="width:19px; height:22px;"><ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div>
+					<figcaption style="font-size:12px;">分</figcaption></figure><span>:</span><figure style="max-width:41px">
+				<div class="first" style="width:19px; height:22px;"><ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div>
+				<div style="width:19px; height:22px;"><ul style="left:2px; top:-22px"><li>0</li><li>0</li></ul></div>
+				<figcaption style="font-size:12px;">秒</figcaption></figure></div>
+        </div>
+        
+<div class="container needToCss" id="needClass">
+            
+   	<div class="row" id="subjects">
+ 	   <div class="col col-xs-4">
+        <div class="bannerItemBox">
+            <div class="imgBox">
+                <!--外链-->
+                <!--内链-->
+                <!--图片-->
+                <!--视频-->
+                <!--文章-->
+                <a href="welcome.htm?sid=2708" style="color: #027bb1;"><img src="../image/mha1.png" alt="1" class="imgaddcss" style="height: 252px;"></a>
+            </div>
+            <span class="needAddColor" style="color: #027bb1;">歡迎辭</span>
+        </div>
+    </div>
+ 	   <div class="col col-xs-4">
+        <div class="bannerItemBox">
+            <div class="imgBox">
+                <!--外链-->
+                <!--内链-->
+                <a href="schedule.htm" style="color: #027bb1;"><img src="../image/mha4.png" alt="1" class="imgaddcss" style="height: 252px;"></a>
+                <!--图片-->
+                <!--视频-->
+                <!--文章-->
+            </div>
+            <span class="needAddColor" style="color: #027bb1;">會議議程</span>
+        </div>
+    </div>
+    	<div class="col col-xs-4">
+        <div class="bannerItemBox">
+            <div class="imgBox">
+                <!--外链-->
+                <!--内链-->
+                <a href="speaker.html" style="color: #027bb1;"><img src="../image/mha5.png" alt="1" class="imgaddcss" style="height: 252px;"></a>
+                <!--图片-->
+                <!--视频-->
+                <!--文章-->
+            </div>
+            <span class="needAddColor" style="color: #027bb1;">专家簡介</span>
+        </div>
+	    </div>
+ 	   <div class="col col-xs-4">
+        <div class="bannerItemBox">
+            <div class="imgBox">
+                <!--外链-->
+                <!--内链-->
+                <a href="qrcode.htm" style="color: #027bb1;"><img src="../image/qr.png" alt="1" class="imgaddcss" style="height: 252px;"></a>
+                <!--图片-->
+                <!--视频-->
+                <!--文章-->
+            </div>
+            <span class="needAddColor" style="color: #027bb1;">掃描二維碼</span>
+        </div>
+    </div>
+
+	</div>
+        </div>
+        
+        <div class="footerBox" id="foot"><p><span style="color: #ecf0f1;"><strong>&nbsp;</strong></span></p>
+<p><span style="color: #ecf0f1;"><strong>&nbsp;</strong></span></p>
+<p style="color: #027bb1; margin-bottom: .1rem;"><span style="color: #027bb1;">網站技術支持：澳門華安科技</span></p></div>
+    </div>
+</div>
+	
+<script src="./js/app.js"></script>
+<!-- banner图模板 -->
+<!-- banner图模板 -->
+<script id="tpl_banner" type="text/x-handlebars-template">
+    {{#each bannerList}}
+    {{#notEquals url '#'}}
+    <div class="swiper-slide">
+        <a href="url.jsp?mid=203',true)"><img src="{{pic}}"></a>
+    </div>
+    {{else}}
+    <div class="swiper-slide">
+        <img src="{{pic}}">
+    </div>
+    {{/notEquals}}
+    {{/each}}
+</script>
+<!-- 栏目模板  -->
+<script id="tpl_subject" type="text/x-handlebars-template">
+    {{#each subjectList}}
+    <div class="col col-xs-4" >
+        <div class="bannerItemBox">
+            <div class="imgBox">
+                <!--外链-->
+                {{#equals type 4}}
+                <a href="{{wailian}}" style="{{font_style}}"><img src="{{icon}}" alt="1" class="imgaddcss"></a>
+                {{/equals}}
+                <!--内链-->
+                {{#equals type 5}}
+                <a href="{{wailian}}.jsp?mid=203&title={{#encodeURI name}}{{/encodeURI}}{{userinfodata}}" style="{{font_style}}"><img src="{{icon}}" alt="1" class="imgaddcss"></a>
+                {{/equals}}
+                <!--图片-->
+                {{#equals type 1}}
+                {{#equals show_type 1}}
+                <a href="tupianList.jsp?mid=203&sid={{id}}&title={{#encodeURI name}}{{/encodeURI}}{{userinfodata}}" style="{{font_style}}"><img src="{{icon}}" alt="1" class="imgaddcss"></a>
+                {{else}}
+                <a href="tupianDanye.jsp?mid=203&sid={{id}}{{userinfodata}}" style="{{font_style}}"><img src="{{icon}}" alt="1" class="imgaddcss"></a>
+                {{/equals}}
+                {{/equals}}
+                <!--视频-->
+                {{#equals type 2}}
+                {{#equals show_type 1}}
+                <a href="shipinList.jsp?mid=203&sid={{id}}&title={{#encodeURI name}}{{/encodeURI}}{{userinfodata}}" style="{{font_style}}"><img src="{{icon}}" alt="1" class="imgaddcss"></a>
+                {{else}}
+                <a href="shipinDanye.jsp?mid=203&sid={{id}}{{userinfodata}}" style="{{font_style}}"><img src="{{icon}}" alt="1" class="imgaddcss"></a>
+                {{/equals}}
+                {{/equals}}
+                <!--文章-->
+                {{#equals type 3}}
+                {{#equals show_type 1}}
+                <a href="wenzhangList.jsp?mid=203&sid={{id}}&title={{#encodeURI name}}{{/encodeURI}}{{userinfodata}}" style="{{font_style}}"><img src="{{icon}}" alt="1" class="imgaddcss"></a>
+                {{else}}
+                <a href="wenzhangDanye.jsp?mid=203&sid={{id}}{{userinfodata}}" style="{{font_style}}"><img src="{{icon}}" alt="1" class="imgaddcss"></a>
+                {{/equals}}
+                {{/equals}}
+            </div>
+            <span class="needAddColor" style="{{font_style}}">{{name}}</span>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script type="text/javascript">
+    var vxcode="";
+    $(document).ready(function () {
+        var mid = '203';
+        var theme = "black";
+        if(mid == 108){
+            $(".countdown").show();
+            theme = "black";
+        }else{
+            $(".countdown").hide();
+        }
+        $('.countdown_main').timeTo({
+            // timeTo: new Date('2020/09/07 22:08:00'),
+            timeTo: new Date('2020/09/19 08:30:00'),
+            displayDays: 3,
+            theme: theme,
+            displayCaptions: true,
+            fontSize: 20,
+            captionSize: 12,
+            lang: 'cn',
+        }, function () {
+            $(".countdown").hide();
+        });
+        // $("#bods").addClass("backgroundWidth100");
+        // if(mid == 19 || mid == 29){
+        //     $("#needClass").addClass("needToCss colorWhite");
+        //     // $("#bods").addClass("backgroundWidth100");
+        // }
+        // if(mid == 58){$('#bay').show()}
+        if(mid == 36){
+            //儒道
+            $("#bods").addClass("topContentBox2");
+            $("#needClass").addClass("needToCss2");
+        } if(mid == 38){
+            /*ccif修改，以后该回来2020-04-17lxh */
+            $("#bods").addClass("topContentBox");
+            $("#bods").addClass("nobackground");
+            $("#needClass").addClass("container needToCss");
+        }if(mid == 64){
+            //西安会
+            $("#bods").addClass("topContentBox2");
+            $("#needClass").addClass("needToCss2");
+        }
+        if(mid == 58){
+            //西安会
+            $("#bods").addClass("topContentBox2");
+            $("#needClass").addClass("needToCss2");
+        }
+        if(mid == 79){
+            //西安会
+            $("#bods").addClass("topContentBox2");
+            $("#needClass").addClass("needToCss2");
+        }
+        else{
+            //正常
+            $("#bods").addClass("topContentBox");
+            $("#needClass").addClass("container needToCss");
+        }
+        function moveRocket() {
+            var width = $("body").width()-60-120;
+            console.log(width);
+            $(".singup img").animate({
+                'left': '+='+width
+            }, 3000).delay(500)
+                .animate({
+                    'left': '-='+width
+                }, 3000, function() {
+                    setTimeout(moveRocket, 1000);
+                });
+        };
+        moveRocket();
+
+        $(".singup img").on("click",function () {
+            window.location.href="http://platform.m-events.cn/dist/#/cbiic/1"
+        })
+        isWeiXin();
+        console.log("vxcode查询之前的="+vxcode);
+//appData/subject/list.do
+		sendPost('list.json', {
+            pid: -1,vxcode:vxcode
+        }, function (data) {
+			debugger;
+            var template = Handlebars.compile($("#tpl_subject").html());
+            var data = {
+                subjectList: data
+            };
+            // subjectList: data,
+            //     styles:style
+            console.log("vxcode查询之后的="+vxcode);
+            console.log(data)
+            $(".index-menu").html(template(data));
+        });
+    })
+    var _html = "";
+    sendPost('appData/banner/page.do', {pageSize: 100}, function (data) {
+        var template = Handlebars.compile($("#tpl_banner").html());
+        var data = {
+            bannerList: data
+        };
+        $(".swiper-wrapper").html(template(data));
+        globalComponent.carouselTwo(data.bannerList.length);
+    });
+    //判断是否是微信登录
+    function isWeiXin() {
+        var ua = window.navigator.userAgent.toLowerCase()
+        //是微信登录
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            getUserInfo();
+            return true
+        } else {
+            return false
+        }
+    }
+    //获取用户信息的方法
+    function getUserInfo(){
+        var url=encodeURIComponent(window.location.href);
+        var mid = '203';
+        if(mid=='38'){
+            getVXCode(url);
+        }
+    }
+    //获取微信code
+    function getVXCode(url){
+        if(getQuery("code")){
+            // 拿到code值
+            vxcode=getQuery("code");
+            //把微信打乱的url地址静默修复
+            console.log("code="+vxcode);
+            return ;
+        }
+        
+        var getCodeUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4109618060bcd12f&redirect_uri='+url+'&response_type=code&scope=snsapi_base&state=1&connect_redirect=1#wechat_redirect';
+        console.log("getCodeUrl="+getCodeUrl);
+        window.location.href = getCodeUrl;
+    }
+    //获取微信code值及判断
+    function getQuery(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+    sendPost('appData/subject/list.do', {
+        pid: -1
+    }, function (data) {
+        var template = Handlebars.compile($("#tpl_subject").html());
+        var data = {
+            subjectList: data
+        };
+        $("#subjects").html(template(data));
+        var mid = '203';
+        if(mid == 34){
+            $(".needAddColor").addClass("fontColor");
+            $(".imgaddcss").addClass("imgaddcss");
+        }
+        if(mid == 90) {
+            $("#subjects").css({color: 'white'})
+        }
+    });
+    //
+    $(function(){
+        $('.bodyBox').css({"height": "0", "min-height": "0", "overflow":"hidden"});
+        setTimeout(function(){
+            $(".imgaddcss").each(function(){
+                var that = $(this);
+                that.height(that.width())
+            })
+            $('.bodyBox').css({"height": "100%", "min-height": "100%", "overflow":"auto"}).fadeIn();
+        }, 1000)
+    })
+    getMeetingConfig_();
+</script>
+
+
+<script src="./js/jweixin-1.6.0.js"></script>
+
+
+<script type="text/javascript">
+    $.ajax({
+        type: "post",
+        dataType: "json",
+        url: "/cms/appData/meeting/setShareConfig.do",
+        data: {
+            url: window.location.href
+        },
+        complete: function () {
+        },
+        success: function (msg) {
+
+            wx.config({
+                debug: false, //
+                appId: msg['appId'], // å¿å¡«ï¼å¬ä¼å·çå¯ä¸æ è¯
+                timestamp: msg['timestamp'], // å¿å¡«ï¼çæç­¾åçæ¶é´æ³
+                nonceStr: msg['nonceStr'], // å¿å¡«ï¼çæç­¾åçéæºä¸²
+                signature: msg['signature'],// å¿å¡«ï¼ç­¾åï¼è§éå½1
+                jsApiList: ['onMenuShareTimeline',
+                    'onMenuShareAppMessage', 'showOptionMenu','updateAppMessageShareData','updateTimelineShareData']
+                // å¿å¡«ï¼éè¦ä½¿ç¨çJSæ¥å£åè¡¨ï¼ææJSæ¥å£åè¡¨è§éå½2
+            });
+        },
+    });
+
+    wx.ready(function () {
+        share();
+    });
+    function share() {
+        sendPost('appData/meeting/getWeiNetword.do', {}, function (data) {
+            var shareTitle = "";
+            var shareDesc = "";
+            var shareImg = "";
+            var host=document.domain;
+            var url = "http://"+host+"/cms/app/7/index.jsp?mid=203";
+            // url = window.location.href;
+            if (data != null) {
+                shareTitle = data.title;
+                shareDesc = data.bg_img;
+                shareImg = data.share_img;
+            }
+            wx.showOptionMenu();
+            wx.updateAppMessageShareData({
+                title: shareTitle, // åäº«æ é¢
+                desc: shareDesc, // åäº«æè¿°
+                link: url, // åäº«é¾æ¥ï¼è¯¥é¾æ¥ååæè·¯å¾å¿é¡»ä¸å½åé¡µé¢å¯¹åºçå¬ä¼å·JSå®å¨ååä¸è´
+                imgUrl: shareImg, // åäº«å¾æ 
+                success: function () {
+                    // è®¾ç½®æå
+                }
+            })
+            wx.updateTimelineShareData({
+                title: shareTitle, // åäº«æ é¢
+                link: url, // åäº«é¾æ¥ï¼è¯¥é¾æ¥ååæè·¯å¾å¿é¡»ä¸å½åé¡µé¢å¯¹åºçå¬ä¼å·JSå®å¨ååä¸è´
+                imgUrl: shareImg, // åäº«å¾æ 
+                success: function () {
+                    // è®¾ç½®æå
+                }
+            })
+        })
+    }
+</script>
+
+
+</body>
+</html>
