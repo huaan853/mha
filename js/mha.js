@@ -60,7 +60,6 @@ function getRefPath()
 	var path=cref.substring(0,cref.lastIndexOf('/'));
 	var rel='';
 	var fn=cref.substring(root.length+1);
-	debugger;
 	if(fn.lastIndexOf('/')>0){
 		rel='../';
 		fn=fn.substring(0,fn.lastIndexOf('/'));
