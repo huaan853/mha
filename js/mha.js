@@ -49,6 +49,8 @@ function getMenuItems()
 	return items;
 }
 //	判斷html相對位置
+//	增加多少个父目录才到根目录
+//
 function getRefPath()
 {
 	var cref=document.URL;
@@ -57,9 +59,21 @@ function getRefPath()
 	var root=jsPath.substring(0,jsPath.lastIndexOf('/'));
 	var path=cref.substring(0,cref.lastIndexOf('/'));
 	var rel='';
+	var fn=cref.substring(root.length+1);
+	debugger;
+	if(fn.lastIndexOf('/')>0){
+		rel='../';
+		fn=fn.substring(0,fn.lastIndexOf('/'));
+	}
+	if(fn.lastIndexOf('/')>0){
+		rel=rel + '../';
+		fn=fn.substring(0,fn.lastIndexOf('/'));
+	}
+/*	
 	if(root != path){
 		rel='../';
 	}
+*/
 	return rel;
 }
 //	
