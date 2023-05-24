@@ -37,7 +37,14 @@ function yearCount(year)
 	case	22022:
 		cnt=6;
 		break;
+	case	12023:
+		cnt=5;
+		break;
+	default:
+		alert(year + " count not be defined");
+		break;
 	}
+	
 	return cnt;
 }
 //
@@ -65,6 +72,9 @@ function activityOther(year,altShow)
 	debugger;
 	
 	var cnt=yearCount(year);
+	if(cnt== 0){
+		
+	}
 	var ryear=year%10000;
 	var path="/"+ ryear;
 	for(var i=0;i < cnt; i++)
