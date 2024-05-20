@@ -40,6 +40,9 @@ function yearCount(year)
 	case	12023:
 		cnt=5;
 		break;
+	case	12024:
+		cnt=5;
+		break;
 	default:
 		alert(year + " count not be defined");
 		break;
@@ -47,6 +50,8 @@ function yearCount(year)
 	
 	return cnt;
 }
+//	
+//	通用
 //
 //	活動入口
 //	用於世界高血壓日

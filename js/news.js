@@ -9,15 +9,26 @@ function newsItem(newsurl,newstitle,newsdate,newsabstract)
 //	每次追加新聞需要在最前面加。
 //	然後在後面減
 
+var NewsItems;
 function getNewsItems()
 {
-	var NewsItems= new Array();
+	debugger;
+	if(typeof NewsItems === "undefined"){
+		NewsItems= new Array();
+	}
+	if(NewsItems.length>0){
+		return NewsItems;
+	}
+	NewsItems= new Array();
 	var i=0;
 //	2024
 	NewsItems[i++]= new newsItem("news-2024-1","高血壓防治研討會順利舉行","2024.5.19","為慶祝世界高血壓日，由澳門高血壓聯盟主辦、大灣區心臟研究學會及澳門急重症醫學會協辦，澳門基金會贊助的澳門高血壓聯盟年會暨高血壓防治研討會二○二四日前假雅辰酒店舉行。");	
 	NewsItems[i++]= new newsItem("news-2024-2","高血壓研討會分享科研成果","2024.5.19","澳門高血壓聯盟年會暨高血壓防治研討會二○二四。");	
-	
 //	2023
+	NewsItems[i++]= new newsItem("news-2023-5","高血壓防治研討會昨舉行","2023.5.21","澳門高血壓聯盟主辦、大灣區心臟研究學會及澳門急重症醫學會協辦，澳門基金會贊助的“澳門高血壓聯盟年會暨國際高血壓防治研討會二○二三”昨日假雅辰酒店舉行。");
+	NewsItems[i++]= new newsItem("news-2023-4","國際高血壓防治研討會雅辰酒店舉行","2023.5.20","國際高血壓防治研討會雅辰酒店舉行 倡高血壓患者平穩降壓保護心腦腎功能");
+	NewsItems[i++]= new newsItem("news-2023-3","團體九澳護養院教心肺復甦","2023.5.20","由澳門基金會資助，澳門高血壓聯盟主辦，澳門急重症醫學會協辦教心肺復甦");	
+	NewsItems[i++]= new newsItem("news-2023-meeting","澳門高血壓聯盟年會暨國際高血壓診治新進展研討會2023","2023.5.10","澳門高血壓聯盟年會暨國際高血壓診治新進展研討會將於2023年5月20日假雅辰酒店舉行。");	
 	NewsItems[i++]= new newsItem("news-2023-1","心臟學會高血壓聯盟參觀國安展","2023.4.20","澳門心臟學會和澳門高血壓聯盟近30人於今日參觀國家安全教育展。");	
 	NewsItems[i++]= new newsItem("news-2023-2","心臟學會、高血壓聯盟參觀國安展","2023.4.20","澳門心臟學會和澳門高血壓聯盟近30人於今日參觀國家安全教育展。");	
 //	2022
@@ -162,7 +173,6 @@ function jsNews(index)
 	addNews(newsItems,div);
 	cycleNo = ns+1;
 	cycle();
-		
 }
 
 function addNews(newsItems,pn)
