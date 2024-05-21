@@ -41,7 +41,7 @@ function yearCount(year)
 		cnt=5;
 		break;
 	case	12024:
-		cnt=5;
+		cnt=6;
 		break;
 	default:
 		alert(year + " count not be defined");
