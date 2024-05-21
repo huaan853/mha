@@ -12,7 +12,6 @@ function newsItem(newsurl,newstitle,newsdate,newsabstract)
 var NewsItems;
 function getNewsItems()
 {
-	debugger;
 	if(typeof NewsItems === "undefined"){
 		NewsItems= new Array();
 	}
