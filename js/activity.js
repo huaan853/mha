@@ -58,7 +58,6 @@ function yearCount(year)
 //
 function activity(year)
 {
-	debugger;
 	var cnt=yearCount(year);
 	for(var i=0;i < cnt; i++)
 	{
@@ -74,7 +73,6 @@ function activity(year)
 
 function activityOther(year,altShow)
 {
-	debugger;
 	
 	var cnt=yearCount(year);
 	if(cnt== 0){
