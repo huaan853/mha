@@ -43,6 +43,10 @@ function yearCount(year)
 	case	12024:
 		cnt=6;
 		break;
+	case	22024:
+		cnt=9;
+		break;
+			
 	default:
 		alert(year + " count not be defined");
 		break;
