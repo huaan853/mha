@@ -23,16 +23,16 @@
 	
 <script>
 	header();
-</script>
-  
-  <!-- This is collapsed navbar-->
-<script>
 	menu("聯盟動態");
 </script> 
 	<div class="my-3 mc_p-3 bg-white rounded box-shadow">
 		<script>
-			jsNews(4);	
-			navpage(4);
+			var pa=MHAgetQueryVariable('p');
+			if(pa===false)
+				pa=0;
+			var p=Number(pa)+1;
+			jsNews(p);	
+			navpage(p);
 		</script>	  
  	</div>
   <!-- Site footer -->
