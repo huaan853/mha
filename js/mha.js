@@ -168,3 +168,17 @@ function tohttps()
 	trytimes ++;
 }
 
+//	2023.5.24
+function readmore(url)
+{
+	var cs=document.currentScript;
+	var ftp=cs.parentNode;
+	var btn=document.createElement("button");
+	btn.className="btn btn-sm mc_btn_bgRed";
+	var a = document.createElement('a');
+	a.className="mc_btn_link";
+	a.href=url;
+	btn.appendChild(a);
+	ftp.appendChild(btn);
+	
+}
