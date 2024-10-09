@@ -25,6 +25,7 @@ function navpage(curPage)
 	hrels[1]="news/news-p2";
 	hrels[2]="news/news-p3";
 	hrels[3]="news/news-p4";
+	hrels[4]="news/news-p4";
 	var nav=document.createElement("nav");
 	nav.setAttribute('aria-label','Page navigation example');
 	var ul=document.createElement("ul");
@@ -45,7 +46,8 @@ function navpage(curPage)
 			if(curPage == 1){
 				ui.className ="page-item disabled";	
 			}else {
-				a.href=rel + hrels[curPage-2]+".html";		
+				var k=curPage-2;
+				a.href=rel + hrels[curPage-2]+".html?p="+k;		
 			}
 		}else if(i==hrels.length+1){
 			a.href="";
@@ -53,10 +55,11 @@ function navpage(curPage)
 			if(curPage == hrels.length ){
 				ui.className ="page-item disabled";	
 			}else {
-				a.href=rel + hrels[curPage]+".html";				
+				a.href=rel + hrels[curPage]+".html?p="+curPage;				
 			}
 		}else {
-			a.href=rel + hrels[i-1]+".html";
+			var k=i-1;
+			a.href=rel + hrels[i-1]+".html?p="+k;
 			a.textContent=i.toString();
 		}
 		ui.appendChild(a);
