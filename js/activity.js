@@ -49,7 +49,9 @@ function yearCount(year)
 	case	32024:
 		cnt=7;
 		break;
-			
+	case 	12025:
+		cnt=3;
+		break;
 	default:
 		alert(year + " count not be defined");
 		break;
@@ -103,6 +105,7 @@ function activityOther(year,altShow)
 //	把activity.html的功能盡可能移動js
 function listSingleActivity()
 {
+	singleActivity('2025-05-18','2025/12025_1_450','2025年世界高血壓日','2025年5月18日');
 	singleActivity('2024-10-05','2024/22024_1_450','2024年全國高血壓日','2024年10月5日');
 	singleActivity('2024-06-22','2024/32024_1_450','2024年澳粵交流','2024年6月22日');
 	singleActivity('2024-05-19','2024/12024_1_450','2024年世界高血壓日','2024年5月19日');
@@ -110,6 +113,23 @@ function listSingleActivity()
 	singleActivity('2022-05-14','2022/22022_1_450','2022年世界高血壓日','2022年5月');
 	
 }
+
+function listActivity()
+{
+	mainActivity('2025-05-18','2025年世界高血壓日','2025年5月');
+	mainActivity('2024-10-05','2024年全國高血壓日','2024年10月');
+	mainActivity('2024-06-22','2024年澳粵交流','2024年6月');
+	mainActivity('2024-05-19','2024年世界高血壓日','2024年5月');
+	mainActivity('2023-05-20','2023年世界高血壓日','2023年5月');
+	mainActivity('2022-05-14','2022年世界高血壓日','2022年5月');
+	mainActivity('2022-04-29','2022年全民國家安全教育展','2022年4月');
+	mainActivity(2021,'2021年世界高血壓日','2021年5月');
+	mainActivity(2020,'2020年世界高血壓日','2020年10月');
+	mainActivity(2019,'2019年世界高血壓日','2019年5月');
+	mainActivity(2018,'2018年世界高血壓日','2018年5月');
+	
+}
+
 //	2020.10.13
 //	2022.5.15完成测试
 //

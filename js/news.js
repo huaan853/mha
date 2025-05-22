@@ -20,6 +20,9 @@ function getNewsItems()
 	}
 	NewsItems= new Array();
 	var i=0;
+//	2025
+	NewsItems[i++]= new newsItem("news-2025-1","澳門高血壓聯盟年會盛大開幕","2025.5.18","匯聚千名醫療專業人員共議高血壓防治新趨勢");
+	
 //	2024
 	NewsItems[i++]= new newsItem("news-2024-3","防治高血壓講座倡健康生活","2024.10.05","澳門高血壓聯盟與婦聯總會頤康中心舉辦社區活動");
 	NewsItems[i++]= new newsItem("news-2024-4","澳粵交流-東莞之行","2024.10.05","澳門高血壓聯盟參觀東莞東華醫院");

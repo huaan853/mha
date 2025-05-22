@@ -175,9 +175,10 @@ function readmore(url)
 	var ftp=cs.parentNode;
 	var btn=document.createElement("button");
 	btn.className="btn btn-sm mc_btn_bgRed";
-	var a = document.createElement('a');
+	var a = document.createElement("a");
 	a.className="mc_btn_link";
 	a.href=url;
+	a.textContent="閱讀更多";
 	btn.appendChild(a);
 	ftp.appendChild(btn);
 	
