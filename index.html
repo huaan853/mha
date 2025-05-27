@@ -11,13 +11,14 @@
 <link href="css/mc_style.css" rel="stylesheet">
 <link href="css/blog.css" rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<!--
-<script src="js/menu.js"></script>
--->
+	<!--
 <script src="js/footer.js"></script>
+-->
+	
 <script src="js/mha.js"></script>
 <script src="js/news.js"></script>
 <script src="js/activity.js"></script>
+<script src="js/research.js"></script>
 	
 </head>
 
@@ -37,12 +38,16 @@
   <div class="row mb-2">
     <div class="col-lg-3">
       <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <div class="list-group"> 
+        <div class="list-group">
+<script>
+	subHeader("news.html","聯盟動態");
+</script>
+	<!--		
 			<a href="news.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <strong class="d-inline-block mb-1 text-danger">聯盟動態</strong> </div>
           </a>
-			
+		-->	
 	<!--		
 			<a href="news/news-2023-meeting.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
@@ -56,8 +61,12 @@
 <script>
 	newsIndex();
 </script>
-			
+<script>
+	readmore("news.html");
+</script>
+			<!--
 			<button type="button" class="btn btn-sm mc_btn_bgRed"><a class="mc_btn_link" href="news.html">閱讀更多</a></button>
+-->
 		  </div>
       </div>
     </div>
@@ -65,35 +74,54 @@
 	  <div class="col-lg-3">
       <div class="card flex-md-row mb-4 box-shadow h-md-250">
         <div class="list-group"> 
+	<script>
+	subHeader("research.html","研究成果");
+</script>
+		<!--
 			<a href="research.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <strong class="d-inline-block mb-1 text-danger">研究成果</strong> </div>
           </a> 
+			-->
+
+			<script>
+	researchIndex();
+</script>
+
+	<!--		
 			<a href="research/20150408_VitaminDStatusHypertension.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h6 class="mb-1">Vitamin D Status and Hypertension: A Review</h6>
            </div>
           <p class="mb-1">2015.4.8</p>
           </a>
+		-->	
+	<!--		
 			<a href="research/20150123_VitaminDParathyroid.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h6 class="mb-1">Vitamin D and Parathyroid Hormone Status in a Representative Population Living in Macau, China</h6>
             </div>
           <p class="mb-1">2015.1.23</p>
           </a>
+-->
+			<!--
 			<a href="research/20140725_PrevalenceAwarenessTreatment.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h6 class="mb-1">Prevalence, Awareness, Treatment and Control of Hypertension in Macau: Results From a Cross-Sectional Epidemiological Study in Macau, China</h6>
            </div>
           <p class="mb-1">2014.7.25</p>
           </a> 
+			
 			<a href="research/20131101_ModifiableRiskFactors.html" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h6 class="mb-1">Modifiable Risk Factors including Sunlight Exposure and Fish Consumption are Associated with Risk of Hypertension in a Large Representative Population from Macau</h6>
            </div>
           <p class="mb-1">2013.11.1</p>
           </a> 
-			<button type="button" class="btn btn-sm mc_btn_bgRed"><a class="mc_btn_link" href="research.html">閱讀更多</a></button>
+-->
+<script>
+	readmore("research.html");
+</script>
 		  </div>
       </div>
     </div>
@@ -149,19 +177,7 @@
 <!-- 活動花絮 -->
 <script>
 	listActivity();
-	/*
-	mainActivity('2025-05-18','2025年世界高血壓日','2025年5月');
-	mainActivity('2024-10-05','2024年全國高血壓日','2024年10月');
-	mainActivity('2024-06-22','2024年澳粵交流','2024年6月');
-	mainActivity('2024-05-19','2024年世界高血壓日','2024年5月');
-	mainActivity('2023-05-20','2023年世界高血壓日','2023年5月');
-	mainActivity('2022-05-14','2022年世界高血壓日','2022年5月');
-	mainActivity('2022-04-29','2022年全民國家安全教育展','2022年4月');
-	mainActivity(2021,'2021年世界高血壓日','2021年5月');
-	mainActivity(2020,'2020年世界高血壓日','2020年10月');
-	mainActivity(2019,'2019年世界高血壓日','2019年5月');
-	mainActivity(2018,'2018年世界高血壓日','2018年5月');
-	*/
+
 </script>
 						
 			<a href="activity/2017.html" class="list-group-item list-group-item-action flex-column align-items-start">
