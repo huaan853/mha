@@ -183,6 +183,23 @@ function readmore(url)
 	ftp.appendChild(btn);
 	
 }
+//	2025.5.23
+function	subHeader(url,title)
+{
+	var cs=document.currentScript;
+	var ftp=cs.parentNode;
+	var a = document.createElement("a");
+	a.className="list-group-item list-group-item-action flex-column align-items-start";
+	a.href=url;
+	var div = document.createElement("div");
+	div.className="d-flex w-100 justify-content-between";
+	var strong = document.createElement("strong");
+	strong.className="d-inline-block mb-1 text-danger";
+	strong.textContent=title;
+	div.appendChild(strong);
+	a.appendChild(div);
+	ftp.appendChild(a);
+}
 //	2024.10.9
 //	
 function MHAgetQueryVariable(variable)
@@ -191,7 +208,9 @@ function MHAgetQueryVariable(variable)
     var vars = query.split("&");
     for (var i=0;i<vars.length;i++) {
         var pair = vars[i].split("=");
-        if(pair[0] == variable){return pair[1];}
+        if(pair[0] == variable){
+			return pair[1];
+		}
     }
     return(false);
 }
