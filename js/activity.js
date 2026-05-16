@@ -1,4 +1,39 @@
 // JavaScript Document
+//	2026.5.15
+//	
+function addClass(ele,cls)
+{
+	var clsbase=ele.className;
+	clsbase =clasbase+' ' + cls;
+	ele.className = clsbase;
+}
+
+function actItem(id,year,picid,title,actdate)
+{
+	this.id=id;
+	this.year=year;
+	this.picid=picid;
+	this.title=title;
+	this.actdate=actdate;
+}
+var	actItems;
+function getActItems()
+{
+	if(typeof actItems !== "undefined")
+		return actItems;
+	 actItems= new Array();
+	var i=0;
+	actItems[i++]= new actItem("2026-05-10","2026",12026,"2026年世界高血壓日","2026年5月10日");
+	return actItems;
+}
+function getActItem(id)
+{
+	var ai=getActItems();
+	for(var i=0;i<ai.length;i++){
+		if(ai[i].id ===id)
+			return ai[i];
+	}
+}
 function getParams(key)
 {
 	var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
@@ -52,6 +87,9 @@ function yearCount(year)
 	case 	12025:
 		cnt=4;
 		break;
+	case 	12026:
+		cnt=4;
+		break;
 	default:
 		alert(year + " count not be defined");
 		break;
@@ -101,10 +139,43 @@ function activityOther(year,altShow)
 	}
 	
 }
+function showYearActivity(year,altShow,pnode)
+{
+	var cnt=yearCount(year);
+	if(cnt== 0){
+		
+	}
+	var ryear=year%10000;
+	var path="/"+ ryear;
+	var photo='../img/photo/';
+	for(var i=0;i < cnt; i++){
+		index= i+1;
+		fn = "/" + year +"_" + index;
+		var div1 = document.createElement('div');
+		div1.className="col-md-4";
+		var div2 = document.createElement('div');
+		div2.className="card mb-4 box-shadow";
+		var anchor = document.createElement('a');
+		anchor.href='../img/photo/w1200' + path + fn +'.jpg';
+		anchor.setAttribute('target','_blank');
+		var img = document.createElement('img');
+		img.className="card-img-top";
+		var imsrc="../img/photo/w450" +path+ fn + "_450.jpg";
+		img.src=imsrc;
+		img.style="width: 100%; display: block;";
+		img.alt=altShow;
+		anchor.appendChild(img);
+		div2.appendChild(anchor);
+		div1.appendChild(div2);
+		pnode.appendChild(div1);
+	}
+	
+}
 //	2024.10.9
 //	把activity.html的功能盡可能移動js
 function listSingleActivity()
 {
+	singleActivity('2026-05-10','2026/12026_1_450','2026年世界高血壓日','2026年5月10日');
 	singleActivity('2025-05-18','2025/12025_1_450','2025年世界高血壓日','2025年5月18日');
 	singleActivity('2024-10-05','2024/22024_1_450','2024年全國高血壓日','2024年10月5日');
 	singleActivity('2024-06-22','2024/32024_1_450','2024年澳粵交流','2024年6月22日');
@@ -116,6 +187,7 @@ function listSingleActivity()
 
 function listActivity()
 {
+	mainActivity('2026-05-10','2026年世界高血壓日','2026年5月');
 	mainActivity('2025-05-18','2025年世界高血壓日','2025年5月');
 	mainActivity('2024-10-05','2024年全國高血壓日','2024年10月');
 	mainActivity('2024-06-22','2024年澳粵交流','2024年6月');
@@ -139,6 +211,17 @@ function listActivity()
 //	h标题
 //	d日期
 //
+function actAnchor(url)
+{
+	var anchor = document.createElement('a');
+	var p=getActItem(url);
+	if(typeof p==="undefined")
+		anchor.href="activity/" + url +".html?id="+url;
+	else
+		anchor.href="activity/activityentry.html?id="+url;
+		
+	return anchor;
+}
 function singleActivity(url,pic,h,d)
 {
 	var cs=document.currentScript;
@@ -150,8 +233,9 @@ function singleActivity(url,pic,h,d)
 	div2.className="card mb-4 box-shadow";
 	div1.appendChild(div2);
 
-	var anchor = document.createElement('a');
-	anchor.href="activity/" + url +".html";
+//	var anchor = document.createElement('a');
+//	anchor.href="activity/" + url +".html";
+	var anchor = actAnchor(url);
 	div2.appendChild(anchor);
 	var img = document.createElement('img');
 	img.className="card-img-top";
@@ -174,9 +258,10 @@ function singleActivity(url,pic,h,d)
 	button.type='button';
 	button.className='btn btn-sm mc_btn_bgRed';
 	div4.appendChild(button);
-	var ab = document.createElement('a');
+//	var ab = document.createElement('a');
+//	ab.href="activity/" + url +".html";
+	var ab = actAnchor(url);
 	ab.className='mc_btn_link';
-	ab.href="activity/" + url +".html";
 	ab.textContent='查看活動照片';
 	button.appendChild(ab);
 	var small = document.createElement('small');
@@ -197,9 +282,10 @@ function mainActivity(url,h,d)
 {
 	var cs=document.currentScript;
 	var curParent=cs.parentNode;
-	var anchor = document.createElement('a');
+//	var anchor = document.createElement('a');
+//	anchor.href="activity/" + url +".html?id="+url;
+	var anchor = actAnchor(url);
 	anchor.className="list-group-item list-group-item-action flex-column align-items-start";
-	anchor.href="activity/" + url +".html";
 	var div = document.createElement('div');
 	div.className="d-flex w-100 justify-content-between";
 	var h6 = document.createElement('h6');
@@ -213,4 +299,38 @@ function mainActivity(url,h,d)
 	anchor.appendChild(p);
 	curParent.appendChild(anchor);	
 	
+}
+
+function doActivity()
+{
+	var id=MHAgetQueryVariable('id');
+	if(typeof id ==="undefined")
+		return;
+	var ai=getActItem(id);
+	if(typeof ai ==="undefined")
+		return;
+	var tit=ai.title;
+
+	var cs=document.currentScript;
+	var curParent=cs.parentNode;
+
+	var div = document.createElement('div');
+	div.className="blog-main my-3 mc_p-3 bg-white rounded box-shadow";
+	var div2 = document.createElement('div');
+	div2.className="blog-post";
+	div.appendChild(div2);
+	var h2 = document.createElement('h2');
+	h2.className="blog-post-title-1";
+	h2.textContent=tit;
+	div2.appendChild(h2);
+	var p = document.createElement('p');
+	p.className="blog-post-meta";
+	p.textContent=ai.actdate;
+	div2.appendChild(p);
+	var div3 = document.createElement('div');
+	div3.className="row";
+	div2.appendChild(div3);
+	
+	showYearActivity(ai.picid,ai.title,div3);
+	curParent.appendChild(div);
 }
